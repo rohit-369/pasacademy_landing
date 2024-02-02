@@ -64,7 +64,7 @@ const SectionGellary = () => {
             </Grid>
             <Grid container spacing={2} padding={'2rem'}>
                 <ImageList
-                    sx={{ width: '1005', height: 450 }}
+                    sx={{ width: '100%', height: 450 }}
                     variant="quilted"
                     cols={4}
                     rowHeight={121}

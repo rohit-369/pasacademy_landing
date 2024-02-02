@@ -59,14 +59,14 @@ const ContentBannerSection = () => {
                 <Box
                     sx={{ width: '1000px' }}
                     display={'flex'}
-                    gap={'10px'}
+                    gap={'20px'}
                 >
                     {banners && banners.map((banner, index) => {
                         return (
                             <>
                                 <CardMedia
                                     component="img"
-                                    height="180"
+                                    height="230px"
                                     width={'auto'}
                                     // image={Endpoints.mediaBaseUrl + banner?.banner ? bannerImage1 : ""}
                                     image={Endpoints.mediaBaseUrl + banner?.banner}
