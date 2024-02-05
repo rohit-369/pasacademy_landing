@@ -5,6 +5,7 @@ import director from './Images/directorsvg.svg'
 import { styled, useTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import checkBoxsvg from './Images/checkBoxsvg.svg'
+import Typewriter from '../../Typewritter';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -58,7 +59,7 @@ const SectionOne = () => {
                                         fontSize: '44px',
                                     }}
                                 >
-                                    Best UPSC Coaching
+                                    Best <Typewriter text="UPSC Coaching" delay={100} />
                                 </Typography>
                                 <Typography
                                     sx={{

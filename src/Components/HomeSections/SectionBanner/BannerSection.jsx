@@ -20,10 +20,7 @@ const BannerSection = () => {
         const response = await CourseNetwrok.fetchBannerss(instId);
         setBanners(response.banners);
     };
-
-    // console.log('banners', banners);
-
-
+    
     useEffect(() => {
         getAllCourses();
         getAllBanners();

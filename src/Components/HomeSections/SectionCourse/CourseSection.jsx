@@ -70,8 +70,6 @@ const CourseSection = () => {
                                     .split(/\s+/) // Split into words
                                     .slice(0, 10) // Take the first 10 words
                                     .join(' ');
-                                console.log('filteredCourse', filteredCourse?.price
-                                );
                                 return (
                                     <Grid item xs={12} sm={3} md={3} display={'flex'} justifyContent={'center'} key={index}>
                                         {/* Your existing Card component code */}
