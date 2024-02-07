@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Home from './Pages/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Content from './Pages/Content';
+import BlogContent from './Pages/BlogContent';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/content' element={<Content />} />
+          <Route path='/blogContent' element={<BlogContent />} />
         </Routes>
       </BrowserRouter>
     </>

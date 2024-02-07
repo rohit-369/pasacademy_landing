@@ -15,18 +15,18 @@ import CalenderSection from '../Components/ContentSections/CalenderSection/Calen
 import SecondBlogSection from '../Components/ContentSections/CalenderSection/SecondBlogSection'
 import CurrentAffairSection from '../Components/ContentSections/CurrentAffairSection/CurrentAffairSection'
 
-const Content = () => {
+const BlogContent = () => {
     return (
         <div>
             <Header />
             <SecondHeader />
             <Navbar />
-            <ContentSectionTwo />
+            {/* <ContentSectionTwo /> */}
             {/* <SectionOne /> */}
             {/* <BannerSection /> */}
             {/* <CourseSection /> */}
-            <CurrentAffairSection />
-            <CalenderSection />
+            {/* <CurrentAffairSection />
+            <CalenderSection /> */}
             <ContentBannerSection />
             <SecondBlogSection />
             <SectionThree />
@@ -40,4 +40,4 @@ const Content = () => {
     )
 }
 
-export default Content
+export default BlogContent
