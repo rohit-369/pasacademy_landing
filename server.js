@@ -4,6 +4,7 @@ import cors from 'cors';
 import mysql from 'mysql';
 import axios from 'axios';
 import { log } from 'console'; // No need to specify 'node:console' since it's a built-in module
+import bodyParser from 'body-parser'; 
 
 const app = express();
 
@@ -40,6 +41,24 @@ app.get('/blogs', (req, res) => {
     });
 });
 
+app.post('/UPSCblogs',bodyParser.json(), (req, res) => {
+    let date = req?.body;
+
+    console.log('date', req?.body);
+
+    // Construct the SQL query string properly, and make sure to use placeholders for the date values
+    // const query = `SELECT * FROM wp_posts WHERE post_status='publish' AND post_type='post' AND post_date BETWEEN '${date}' AND DATE_ADD('${date}', INTERVAL 1 DAY)`;
+
+    // con.query(query, (err, results) => {
+    //     if (err) {
+    //         console.error("Error executing MySQL query: " + err.stack);
+    //         res.status(500).send("Internal Server Error");
+    //         return;
+    //     }
+    //     res.json(results);
+    // });
+});
+
 app.get('/category', (req, res) => {
     const query = `SELECT * FROM wp_terms`;
     con.query(query, (err, results) => {
@@ -52,8 +71,14 @@ app.get('/category', (req, res) => {
     });
 });
 
-app.get('/categoryList', (req, res) => {
-    const query = `SELECT * FROM 'wp_posts' left join wp_term_relationships ON wp_term_relationships.object_id=wp_posts.ID left JOIN wp_terms on wp_terms.term_id=wp_term_relationships.term_taxonomy_id WHERE wp_posts.post_status='publish' AND wp_posts.post_type='post';`;
+app.get('/currentAffairList', (req, res) => {
+
+    const query = `SELECT * FROM \`wp_posts\` 
+    LEFT JOIN \`wp_term_relationships\` ON \`wp_term_relationships\`.\`object_id\` = \`wp_posts\`.\`ID\` 
+    LEFT JOIN \`wp_terms\` ON \`wp_terms\`.\`term_id\` = \`wp_term_relationships\`.\`term_taxonomy_id\` 
+    WHERE \`wp_posts\`.\`post_status\` = 'publish' 
+    AND \`wp_posts\`.\`post_type\` = 'post' 
+    AND \`wp_terms\`.\`name\` = 'Test Category'`;
     con.query(query, (err, results) => {
         if (err) {
             console.error("Error executing MySQL query: " + err.stack);

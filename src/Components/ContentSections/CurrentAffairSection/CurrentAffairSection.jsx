@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import image from './Images/image.svg'
 import image2 from './Images/image2.svg'
 import parse from 'html-react-parser'
@@ -37,7 +37,30 @@ const CurrentAffairSection = () => {
             post_content: 'Content 4',
             post_date: 'Date 4'
         },
-    ]
+    ];
+
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // useEffect(() => {
+    //     const fetchCurrentAffiar = async () => {
+    //         try {
+    //             const response = await fetch('http://localhost:5001/currentAffairList');
+    //             if (!response.ok) {
+    //                 throw new Error('Failed to fetch data');
+    //             }
+    //             const jsonData = await response.json();
+    //             setData(jsonData);
+    //             setIsLoading(false);
+    //         } catch (error) {
+    //             setError(error);
+    //             setIsLoading(false);
+    //         }
+    //     };
+
+    //     fetchCurrentAffiar();
+    // }, []);
 
     return (
         <Box m='20px'>

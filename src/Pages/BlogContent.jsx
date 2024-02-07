@@ -14,8 +14,15 @@ import ContentBannerSection from '../Components/ContentSections/ContentBanner/Co
 import CalenderSection from '../Components/ContentSections/CalenderSection/CalenderSection'
 import SecondBlogSection from '../Components/ContentSections/CalenderSection/SecondBlogSection'
 import CurrentAffairSection from '../Components/ContentSections/CurrentAffairSection/CurrentAffairSection'
+import { useLocation } from 'react-router-dom'
+import BlogContentSecionOne from '../Components/BlogContentSections/BlogContentSecionOne/BlogContentSecionOne'
+import BlogContentSectionTwo from '../Components/BlogContentSections/BlogContentSectionTwo/BlogContentSectionTwo'
 
 const BlogContent = () => {
+
+    const location = useLocation();
+    const blogData = location?.state?.data
+
     return (
         <div>
             <Header />
@@ -27,6 +34,8 @@ const BlogContent = () => {
             {/* <CourseSection /> */}
             {/* <CurrentAffairSection />
             <CalenderSection /> */}
+            <BlogContentSecionOne blogData={blogData} />
+            <BlogContentSectionTwo />
             <ContentBannerSection />
             <SecondBlogSection />
             <SectionThree />

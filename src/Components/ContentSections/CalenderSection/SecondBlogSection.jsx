@@ -33,8 +33,6 @@ const SecondBlogSection = () => {
         fetchData();
     }, []);
 
-    console.log('cardData', cardData);
-
     const next = () => {
         const maxIndex = cardData.length - 1;
         const newIndex = (index + 1) % (maxIndex + 1);
@@ -105,88 +103,104 @@ const SecondBlogSection = () => {
                     </button>
                 </Grid>
             </Grid>
-            <Grid container spacing={2} p={2} gap={'10px'}>
+            <Grid container spacing={2} p={2}>
                 {
                     showAll
                         ?
-                        cardData.map((data) => (
-                            <Grid item xs={12} sm={4} md={3} key={data.id}>
-                                <Card sx={{ maxWidth: 345 }}>
-                                    <CardMedia
-                                        sx={{ height: 200 }}
-                                        image={data?.guid}
-                                    // title="green iguana"
-                                    />
-                                    <CardContent>
-                                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                                            {data?.post_title}
-                                        </Typography>
-                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
-                                            {parse(data?.post_content)}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
-                                            {moment(data?.post_date).format('MMMM Do YYYY')}
-                                        </Typography>
-                                        <Button
-                                            sx={{
-                                                // background: '#F6E9FF',
-                                                padding: '16px 32px',
-                                                alignItems: 'flex-end',
-                                                gap: '10px',
-                                                borderRadius: '15px',
-                                                textTransform: 'none',
-                                                fontSize: '14px',
-                                                fontWeight: '700',
-                                                color: "#8976FD"
-                                            }}
-                                        >
-                                            Read More
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
-                        ))
-                        : cardData.slice(index, index + 4).map((data) => (
-                            <Grid item xs={12} sm={4} md={3} key={data.id}>
-                                <Card sx={{ maxWidth: 345 }}>
-                                    <CardMedia
-                                        sx={{ height: 200 }}
-                                        image={data?.guid}
-                                    // title="green iguana"
-                                    />
-                                    <CardContent>
-                                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                                            {data?.post_title}
-                                        </Typography>
-                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
-                                            {parse(data?.post_content)}
-                                        </Typography>
-                                    </CardContent>
-                                    <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'} mt={'-15px'} ml={1}>
-                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
-                                            {moment(data?.post_date).format('MMMM Do YYYY')}
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                // background: '#F6E9FF',
-                                                padding: '16px 32px',
-                                                alignItems: 'flex-end',
-                                                gap: '10px',
-                                                borderRadius: '15px',
-                                                textTransform: 'none',
-                                                fontSize: '14px',
-                                                fontWeight: '700',
-                                                color: "#8976FD"
-                                            }}
-                                        >
-                                            Read More
-                                        </Typography>
-                                    </Box>
-                                </Card>
-                            </Grid>
-                        ))
+                        cardData.map((data) => {
+                            const first10Words = data?.post_content
+                                .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                                .split(/\s+/) // Split into words
+                                .slice(0, 10) // Take the first 10 words
+                                .join(' ');
+
+                            return (
+                                <Grid item xs={12} sm={3} md={3} key={data.id}>
+                                    <Card sx={{ maxWidth: 345, height: '100%' }}>
+                                        <CardMedia
+                                            sx={{ height: 200 }}
+                                            image={data?.guid}
+                                        // title="green iguana"
+                                        />
+                                        <CardContent>
+                                            <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                                                {data?.post_title}
+                                            </Typography>
+                                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
+                                                {parse(first10Words)}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                                                {moment(data?.post_date).format('MMMM Do YYYY')}
+                                            </Typography>
+                                            <Button
+                                                sx={{
+                                                    // background: '#F6E9FF',
+                                                    padding: '16px 32px',
+                                                    alignItems: 'flex-end',
+                                                    gap: '10px',
+                                                    borderRadius: '15px',
+                                                    textTransform: 'none',
+                                                    fontSize: '14px',
+                                                    fontWeight: '700',
+                                                    color: "#8976FD"
+                                                }}
+                                            >
+                                                Read More
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                </Grid>
+                            )
+                        })
+                        :
+                        cardData.slice(index, index + 4).map((data) => {
+                            const first10Words = data?.post_content
+                                .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                                .split(/\s+/) // Split into words
+                                .slice(0, 10) // Take the first 10 words
+                                .join(' ');
+                            return (
+                                <Grid item xs={12} sm={3} md={3} key={data.id}>
+                                    <Card sx={{ maxWidth: 345, height: '100%' }}>
+                                        <CardMedia
+                                            sx={{ height: 200 }}
+                                            image={data?.guid}
+                                        // title="green iguana"
+                                        />
+                                        <CardContent>
+                                            <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                                                {data?.post_title}
+                                            </Typography>
+                                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
+                                                {parse(first10Words)}
+                                            </Typography>
+                                        </CardContent>
+                                        <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'} mt={'-15px'} ml={1} position={'sticky'}>
+                                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                                                {moment(data?.post_date).format('MMMM Do YYYY')}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
+                                                    // background: '#F6E9FF',
+                                                    padding: '16px 32px',
+                                                    alignItems: 'flex-end',
+                                                    gap: '10px',
+                                                    borderRadius: '15px',
+                                                    textTransform: 'none',
+                                                    fontSize: '14px',
+                                                    fontWeight: '700',
+                                                    color: "#8976FD"
+                                                }}
+                                            >
+                                                Read More
+                                            </Typography>
+                                        </Box>
+                                    </Card>
+                                </Grid>
+                            )
+                        })
                 }
             </Grid>
             <Box

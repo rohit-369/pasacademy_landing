@@ -38,6 +38,29 @@ const CalenderSection = () => {
         fetchData();
     }, []);
 
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.post('http://localhost:5001/UPSCblogs', { 'date': value }, {
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+
+    //         if (!response.data) {
+    //             throw new Error('Failed to fetch data');
+    //         }
+
+    //         const jsonData = response.data;
+    //         return jsonData;
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, [value]);
+
     console.log('data', data);
 
     return (
@@ -126,7 +149,7 @@ const CalenderSection = () => {
                             backgroundImage: 'linear-gradient(#A34218, #1C006B)',
                             background: 'linear-gradient(to right, #A34218, #1C006B)',
                             borderRadius: '20px',
-                            width: ['100%', '79%'],
+                            width: ['100%', '90%'],
                             padding: '10px'
                         }}
                     >
