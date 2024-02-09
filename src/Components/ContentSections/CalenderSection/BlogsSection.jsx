@@ -12,6 +12,7 @@ const BlogSection = ({ cardData }) => {
     const [index, setIndex] = useState(0);
     const [showAll, setShowAll] = useState(false);
 
+
     const next = () => {
         const maxIndex = cardData.length - 1;
         const newIndex = (index + 1) % (maxIndex + 1);
@@ -26,10 +27,13 @@ const BlogSection = ({ cardData }) => {
 
     const toggleViewAll = () => {
         setShowAll(!showAll);
-    }
+    };
+
+    console.log('cardData', cardData);
 
     const handleReadMoreBlog = (e, data) => {
-        navigate(`/blogContent/${data?.ID}`, { state: { data: data } });
+        navigate(`/blogContent/${data?.ID}`);
+        // console.log('id', data);
     };
 
     return (
@@ -91,18 +95,29 @@ const BlogSection = ({ cardData }) => {
                     showAll
                         ?
                         cardData.map((data) => {
+                            const extractImageUrlFromPostContent = (post_content) => {
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(post_content, 'text/html');
+                                const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                                if (imageElement) {
+                                    return imageElement.getAttribute('src');
+                                } else {
+                                    return null;
+                                }
+                            }
                             const first10Words = data?.post_content
                                 .replace(/<[^>]*>/g, ' ') // Remove HTML tags
                                 .split(/\s+/) // Split into words
                                 .slice(0, 10) // Take the first 10 words
                                 .join(' ');
-
+                            const imageUrl = extractImageUrlFromPostContent(data?.post_content);
                             return (
                                 <Grid item xs={12} sm={3} md={3} key={data.id}>
                                     <Card sx={{ maxWidth: 345, height: '100%' }}>
                                         <CardMedia
                                             sx={{ height: 200 }}
-                                            image={data?.guid}
+                                            image={imageUrl}
                                         // title="green iguana"
                                         />
                                         <CardContent>
@@ -118,7 +133,7 @@ const BlogSection = ({ cardData }) => {
                                                 {moment(data?.post_date).format('MMMM Do YYYY')}
                                             </Typography>
                                             <Button
-                                                onClick={handleReadMoreBlog}
+                                                onClick={(e) => handleReadMoreBlog(e, data)}
                                                 sx={{
                                                     // background: '#F6E9FF',
                                                     padding: '16px 32px',
@@ -140,17 +155,30 @@ const BlogSection = ({ cardData }) => {
                         })
                         :
                         cardData.slice(index, index + 3).map((data) => {
+                            const extractImageUrlFromPostContent = (post_content) => {
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(post_content, 'text/html');
+                                const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                                if (imageElement) {
+                                    return imageElement.getAttribute('src');
+                                } else {
+                                    return null;
+                                }
+                            }
+
                             const first10Words = data?.post_content
                                 .replace(/<[^>]*>/g, ' ') // Remove HTML tags
                                 .split(/\s+/) // Split into words
                                 .slice(0, 10) // Take the first 10 words
                                 .join(' ');
+                            const imageUrl = extractImageUrlFromPostContent(data?.post_content);
                             return (
                                 <Grid item xs={12} sm={3} md={3} key={data.id}>
                                     <Card sx={{ maxWidth: 345, height: '100%' }}>
                                         <CardMedia
                                             sx={{ height: 200 }}
-                                            image={data?.guid}
+                                            image={imageUrl}
                                         // title="green iguana"
                                         />
                                         <CardContent>
@@ -165,8 +193,8 @@ const BlogSection = ({ cardData }) => {
                                             <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
                                                 {moment(data?.post_date).format('MMMM Do YYYY')}
                                             </Typography>
-                                            <Typography
-                                                onClick={handleReadMoreBlog}
+                                            <Button
+                                                onClick={(e) => handleReadMoreBlog(e, data)}
                                                 sx={{
                                                     // background: '#F6E9FF',
                                                     padding: '16px 32px',
@@ -180,7 +208,7 @@ const BlogSection = ({ cardData }) => {
                                                 }}
                                             >
                                                 Read More
-                                            </Typography>
+                                            </Button>
                                         </Box>
                                     </Card>
                                 </Grid>
@@ -215,7 +243,6 @@ const BlogSection = ({ cardData }) => {
                     {showAll ? 'Show Less' : 'View All'}
                 </Button>
             </Box>
-
         </Box>
     )
 }

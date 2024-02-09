@@ -13,44 +13,18 @@ const ContentSectionOne = () => {
 
     const [type, setType] = useState('mobile');
 
-    const handleChangeImageMobile = () => {
-        setType('mobile');
-    }
-
-    const handleChangeImageTab = () => {
-        setType('tab');
-    }
-
-    const handleChangeImageDesktop = () => {
-        setType('desktop');
-    }
-
     return (
         <Box sx={{ flexGrow: 1, pt: 8 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={6} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-                    {type === 'mobile' && (
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <img alt='' width={'45%'} style={{ position: 'relative', left: '70px' }} src={phoneSvg} />
-                        </div>
-                    )}
-                    {type === 'tab' && (
-                        <div>
-                            {/* Content for Tablet */}
-                            Tab
-                        </div>
-                    )}
-                    {type === 'desktop' && (
-                        <div>
-                            {/* Content for Desktop */}
-                            Desk
-                        </div>
-                    )}
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <img alt='' width={'45%'} style={{ position: 'relative', left: '70px' }} src={phoneSvg} />
+                    </div>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} p={2}>
                     <Typography
@@ -77,7 +51,6 @@ const ContentSectionOne = () => {
                     <Grid container spacing={2} mt={3} width={['100%', '60%']} >
                         <Grid item xs={12} sm={4} md={4}>
                             <Paper sx={{ p: 2 }}
-                                onClick={handleChangeImageMobile}
                             >
                                 <img alt='' width={'50%'} style={{ position: 'relative', left: '35px' }} src={androidPhone} />
                                 <Typography
@@ -103,7 +76,6 @@ const ContentSectionOne = () => {
                         </Grid>
                         <Grid item xs={12} sm={4} md={4}>
                             <Paper sx={{ p: 2 }}
-                                onClick={handleChangeImageTab}
                             >
                                 <img alt='' width={'100%'} src={tabletSvg} />
                                 <Typography
@@ -129,7 +101,6 @@ const ContentSectionOne = () => {
                         </Grid>
                         <Grid item xs={12} sm={4} md={4}>
                             <Paper sx={{ p: 2 }}
-                                onClick={handleChangeImageDesktop}
                             >
                                 <img alt='' width={'100%'} src={desktopSvg} />
                                 <Typography

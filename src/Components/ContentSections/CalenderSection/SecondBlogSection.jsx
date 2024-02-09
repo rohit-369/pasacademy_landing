@@ -108,6 +108,19 @@ const SecondBlogSection = () => {
                     showAll
                         ?
                         cardData.map((data) => {
+
+                            const extractImageUrlFromPostContent = (post_content) => {
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(post_content, 'text/html');
+                                const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                                if (imageElement) {
+                                    return imageElement.getAttribute('src');
+                                } else {
+                                    return null;
+                                }
+                            }
+                            const imageUrl = extractImageUrlFromPostContent(data?.post_content);
                             const first10Words = data?.post_content
                                 .replace(/<[^>]*>/g, ' ') // Remove HTML tags
                                 .split(/\s+/) // Split into words
@@ -119,7 +132,7 @@ const SecondBlogSection = () => {
                                     <Card sx={{ maxWidth: 345, height: '100%' }}>
                                         <CardMedia
                                             sx={{ height: 200 }}
-                                            image={data?.guid}
+                                            image={imageUrl}
                                         // title="green iguana"
                                         />
                                         <CardContent>
@@ -156,17 +169,30 @@ const SecondBlogSection = () => {
                         })
                         :
                         cardData.slice(index, index + 4).map((data) => {
+                            const extractImageUrlFromPostContent = (post_content) => {
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(post_content, 'text/html');
+                                const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                                if (imageElement) {
+                                    return imageElement.getAttribute('src');
+                                } else {
+                                    return null;
+                                }
+                            }
+                            const imageUrl = extractImageUrlFromPostContent(data?.post_content);
                             const first10Words = data?.post_content
                                 .replace(/<[^>]*>/g, ' ') // Remove HTML tags
                                 .split(/\s+/) // Split into words
                                 .slice(0, 10) // Take the first 10 words
                                 .join(' ');
+
                             return (
                                 <Grid item xs={12} sm={3} md={3} key={data.id}>
                                     <Card sx={{ maxWidth: 345, height: '100%' }}>
                                         <CardMedia
                                             sx={{ height: 200 }}
-                                            image={data?.guid}
+                                            image={imageUrl}
                                         // title="green iguana"
                                         />
                                         <CardContent>

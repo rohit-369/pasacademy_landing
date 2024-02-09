@@ -15,15 +15,14 @@ import CalenderSection from '../Components/ContentSections/CalenderSection/Calen
 import SecondBlogSection from '../Components/ContentSections/CalenderSection/SecondBlogSection'
 import CurrentAffairSection from '../Components/ContentSections/CurrentAffairSection/CurrentAffairSection'
 import { useLocation, useParams } from 'react-router-dom'
-import BlogContentSecionOne from '../Components/BlogContentSections/BlogContentSecionOne/BlogContentSecionOne'
+import CurrentAffairContentSection from '../Components/ContentSections/CurrentAffairContent/CurrentAffairContentSection'
 import BlogContentSectionTwo from '../Components/BlogContentSections/BlogContentSectionTwo/BlogContentSectionTwo'
 
-const BlogContent = () => {
+const CurrentAffairContent = () => {
 
-    const {id} = useParams();
-
+    const { id } = useParams();
     const [index, setIndex] = useState(0);
-    const [blogData, setBlogData] = useState({});
+    const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -35,7 +34,7 @@ const BlogContent = () => {
                     throw new Error('Failed to fetch data');
                 }
                 const jsonData = await response.json();
-                setBlogData(jsonData);
+                setData(jsonData);
                 setIsLoading(false);
             } catch (error) {
                 setError(error);
@@ -45,6 +44,7 @@ const BlogContent = () => {
 
         fetchData();
     }, []);
+
 
     return (
         <div>
@@ -56,8 +56,8 @@ const BlogContent = () => {
             {/* <BannerSection /> */}
             {/* <CourseSection /> */}
             {/* <CurrentAffairSection />
-            <CalenderSection /> */}
-            <BlogContentSecionOne blogData={blogData} />
+    <CalenderSection /> */}
+            <CurrentAffairContentSection data={data} />
             <BlogContentSectionTwo />
             <ContentBannerSection />
             <SecondBlogSection />
@@ -72,4 +72,4 @@ const BlogContent = () => {
     )
 }
 
-export default BlogContent
+export default CurrentAffairContent

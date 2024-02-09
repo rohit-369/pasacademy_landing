@@ -349,10 +349,10 @@ const Navbar = () => {
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
                             <MenuItem onClick={handleCloseF}>
-                                Free Resourses
+                                Current Affair
                             </MenuItem>
                             <MenuItem onClick={handleCloseF}>
-                                Free Resourses
+                                Blogs
                             </MenuItem>
                         </Menu>
                         <Button sx={{ color: '#fff', fontWeight: '600', textTransform: 'none' }}>

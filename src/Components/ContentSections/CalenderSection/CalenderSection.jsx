@@ -11,57 +11,89 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import axios from 'axios';
 
 const CalenderSection = () => {
 
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [value, setValue] = React.useState(dayjs('2022-04-17'));
+    const [value, setValue] = React.useState(null);
+
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const date = new Date(); // Create a Date object with your desired date
+    const day = date.getDate() - 3;
+    const monthName = months[date.getMonth()];
+    const year = date.getFullYear();
+    const formattedDate = `${day} ${monthName} ${year}`;
+
+    const day2 = date.getDate() - 2;
+    const formattedDate1 = `${day2} ${monthName} ${year}`;
+
+    const day3 = date.getDate() - 1;
+    const formattedDate3 = `${day3} ${monthName} ${year}`;
+
+    const handleChangeDate = (newValue) => {
+        const dateObj = new Date(newValue);
+
+        // Extract date components
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Adding 1 to month as it starts from 0
+        const date = String(dateObj.getDate()).padStart(2, '0');
+
+        // Extract time components
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+
+        // Concatenate components in the desired format
+        const formattedDate = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+        setValue(newValue);
+    };
+
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.post('http://localhost:5001/UPSCblogs', { 'date': value }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.data) {
+                throw new Error('Failed to fetch data');
+            }
+
+            const jsonData = response.data;
+            return jsonData;
+        } catch (error) {
+            throw error;
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:5001/blogs');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                const jsonData = await response.json();
-                setData(jsonData);
-                setIsLoading(false);
-            } catch (error) {
-                setError(error);
-                setIsLoading(false);
-            }
-        };
+        fetchData(null)
+            .then(data => {
+                setData(data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, [value]);
 
-        fetchData();
-    }, []);
-
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.post('http://localhost:5001/UPSCblogs', { 'date': value }, {
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-
-    //         if (!response.data) {
-    //             throw new Error('Failed to fetch data');
-    //         }
-
-    //         const jsonData = response.data;
-    //         return jsonData;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, [value]);
-
-    console.log('data', data);
+    const handleDateChange = (date) => {
+        const dateObj = new Date(date);
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const date1 = String(dateObj.getDate()).padStart(2, '0');
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${date1} ${hours}:${minutes}:${seconds}`;
+        setValue(formattedDate);
+    }
 
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
@@ -244,7 +276,7 @@ const CalenderSection = () => {
                                     },
                                 }}
                             >
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate)}>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
@@ -254,7 +286,7 @@ const CalenderSection = () => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -280,7 +312,7 @@ const CalenderSection = () => {
                                     },
                                 }}
                             >
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate1)}>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
@@ -290,7 +322,7 @@ const CalenderSection = () => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate1}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -316,7 +348,7 @@ const CalenderSection = () => {
                                     },
                                 }}
                             >
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate3)}>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
@@ -326,7 +358,7 @@ const CalenderSection = () => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate3}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -353,7 +385,7 @@ const CalenderSection = () => {
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DateCalendar', 'DateCalendar']}>
                                     <DemoItem>
-                                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
+                                        <DateCalendar defaultValue={value} onChange={handleChangeDate} />
                                     </DemoItem>
                                 </DemoContainer>
                             </LocalizationProvider>

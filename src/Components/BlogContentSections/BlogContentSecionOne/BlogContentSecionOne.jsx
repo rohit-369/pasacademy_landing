@@ -15,25 +15,32 @@ const BlogContentSecionOne = ({ blogData }) => {
 
     const [value, setValue] = React.useState(dayjs('2022-04-17'));
 
-    console.log('BlogContentSecionOne', blogData);
+    console.log('blogData', blogData);
 
     return (
         <Box m='20px' >
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={8} md={8} p={3}>
-                    <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
-                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
-                            {blogData?.post_title}
-                        </Typography>
-                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
-                            {moment(blogData?.post_date).format('MMMM Do YYYY')}
-                        </Typography>
-                    </Box>
-                    <img alt='' src={blogData?.guid} />
-                    <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
-                        {parse(blogData?.post_content)}
+                {/* {Array.isArray(blogData) && blogData.map((data, index) => (
+                    <Typography key={index}>
+                        {data?.post_date}
                     </Typography>
-                </Grid>
+                ))} */}
+                {Array.isArray(blogData) && blogData.map((data, index) => (
+                    <Grid item xs={12} sm={8} md={8} p={3}>
+                        <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
+                            <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
+                                {data?.post_title}
+                            </Typography>
+                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
+                                {moment(data?.post_date).format('MMMM Do YYYY')}
+                            </Typography>
+                        </Box>
+                        <img alt='' src={data?.guid} />
+                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
+                            {parse(data?.post_content)}
+                        </Typography>
+                    </Grid>
+                ))}
                 <Grid item xs={12} sm={4} md={4}
                     display={'flex'}
                     justifyContent={'center'}
