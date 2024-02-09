@@ -125,7 +125,7 @@ const CurrentAffairSection = () => {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button
+                                    {/* <Button
                                         sx={{
                                             borderRadius: '30px',
                                             textTransform: 'none',
@@ -136,7 +136,7 @@ const CurrentAffairSection = () => {
                                         }}
                                     >
                                         {data?.name}
-                                    </Button>
+                                    </Button> */}
                                     {/* <Button
                                 sx={{
                                     borderRadius: '30px',
@@ -215,7 +215,7 @@ const CurrentAffairSection = () => {
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button
+                                            {/* <Button
                                                 sx={{
                                                     borderRadius: '30px',
                                                     textTransform: 'none',
@@ -226,7 +226,7 @@ const CurrentAffairSection = () => {
                                                 }}
                                             >
                                                 {data.name}
-                                            </Button>
+                                            </Button> */}
                                             {/* <Button
                                                 sx={{
                                                     borderRadius: '30px',
@@ -305,7 +305,7 @@ const CurrentAffairSection = () => {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        <Button
+                                        {/* <Button
                                             sx={{
                                                 borderRadius: '30px',
                                                 textTransform: 'none',
@@ -328,7 +328,7 @@ const CurrentAffairSection = () => {
                                             }}
                                         >
                                             {data.name}
-                                        </Button>
+                                        </Button> */}
                                     </CardActions>
                                     <CardActions
                                         sx={{
