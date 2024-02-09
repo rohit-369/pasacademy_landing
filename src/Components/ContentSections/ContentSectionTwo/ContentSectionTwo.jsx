@@ -5,10 +5,13 @@ import USC from './Images/USC.svg'
 import Ellipse1080 from './Images/Ellipse1080.svg'
 import magazine from './Images/magazine.svg'
 import paper from './Images/paper.svg'
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import checkBoxsvg from './Images/checkBoxsvg.svg'
 
 const ContentSectionTwo = () => {
+
+    const isMobile = useMediaQuery("(min-width:600px)");
+
     return (
         <Box
             sx={{
@@ -23,7 +26,7 @@ const ContentSectionTwo = () => {
         >
             <Grid container spacing={1} pt={5}>
                 {/* <hr color='#fff' style={{ height: '30px', position: 'relative', top: '520px', width: '100%' }} /> */}
-                <Grid item xs={12} sm={6} md={6} position={'relative'} left={['0px','23rem']}>
+                <Grid item xs={12} sm={6} md={6} position={'relative'} left={['0px', '23rem']}>
                     <Typography
                         fontFamily={'Inter'}
                         fontWeight={'700'}
@@ -134,20 +137,20 @@ const ContentSectionTwo = () => {
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'end'}>
-                                <img alt='' style={{ width: '30%' }} src={USC} />
+                                <img alt='' style={{ width: isMobile ? '30%' : '100%' }} src={USC} />
                             </Grid>
                             <Grid item xs={6} sm={6} md={6}>
-                                <img alt='' style={{ width: '35%' }} src={Ellipse1080} />
+                                <img alt='' style={{ width: isMobile ? '35%' : '100%' }} src={Ellipse1080} />
                             </Grid>
                         </Grid>
                     </Box>
                     <Box sx={{ flexGrow: 1, mt: 1 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'} mt={2}>
-                                <img alt='' style={{ width: '80%', position: 'relative', top: '30px', left: '-5px' }} src={paper} />
+                                <img alt='' style={{ width: isMobile ? '80%' : '100%', position: 'relative', top: '30px', left: '-5px' }} src={paper} />
                             </Grid>
                             <Grid item xs={6} sm={6} md={6} mb={2}>
-                                <img alt='' style={{ width: '65%', position: 'relative', top: '-10x', right: '160px' }} src={magazine} />
+                                <img alt='' style={{ width: isMobile ? '65%' : '100%', position: 'relative', top: '-10x', right: isMobile ? '160px' : '35px' }} src={magazine} />
                             </Grid>
                         </Grid>
                     </Box>

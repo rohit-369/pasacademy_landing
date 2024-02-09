@@ -17,6 +17,7 @@ import CurrentAffairSection from '../Components/ContentSections/CurrentAffairSec
 import { useLocation, useParams } from 'react-router-dom'
 import CurrentAffairContentSection from '../Components/ContentSections/CurrentAffairContent/CurrentAffairContentSection'
 import BlogContentSectionTwo from '../Components/BlogContentSections/BlogContentSectionTwo/BlogContentSectionTwo'
+import whatsAppSvg from '../../images/whatsAppSvg.svg';
 
 const CurrentAffairContent = () => {
 
@@ -25,6 +26,11 @@ const CurrentAffairContent = () => {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const handleWhatsapp = () => {
+        const url = `https://api.whatsapp.com/send?phone=919630020141`
+        window.open(url, '_blank', 'noreferrer');
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,6 +74,26 @@ const CurrentAffairContent = () => {
             <SectionTwo />
             <SecondFooter />
             <Footer />
+            <div style={{ position: 'fixed', left: '-45px', top: '90%', transform: 'translateY(-50%)', padding: '10px', width: '100%', display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
+                <Button variant="contained" color="primary"
+                    onClick={handleWhatsapp}
+                    sx={{
+                        textTransform: 'none',
+                        background: '#28B71D',
+                        boxShadow: '0px 3px 8px 0px rgba(0, 0, 0, 0.24)',
+                        borderRadius: '40px',
+                        gap: '5px',
+                        fontWeight: '600',
+                        fontSize: '14px',
+                        '&:hover': {
+                            background: '#28B71D',
+                        },
+                    }}
+                >
+                    <img alt='' width={'15%'} src={whatsAppSvg} />
+                    WhatsApp Us
+                </Button>
+            </div>
         </div>
     )
 }

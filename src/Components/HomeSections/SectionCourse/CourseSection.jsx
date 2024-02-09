@@ -24,7 +24,7 @@ const CourseSection = () => {
     };
 
     const handleBuyCourse = (item) => {
-        const url = `https://iframe.classiolabs.com/buyCourseDetails/` + `?iframeId=10&courseId=${item?.id}&folderId=${0}&on-click=${true}`
+        const url = `https://iframe.classiolabs.com/buyCourseDetails/` + `?iframeId=12&courseId=${item?.id}&folderId=${0}&on-click=${true}`
 
         // const url = `${iframeData?.redirectUri}/buyCourseDetails/${item?.id}/0`
         window.open(url, '_blank', 'noreferrer');

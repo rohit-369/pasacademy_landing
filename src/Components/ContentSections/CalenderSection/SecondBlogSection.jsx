@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
 import image1 from './Images/image1.svg';
@@ -9,7 +9,7 @@ const SecondBlogSection = () => {
 
     const [index, setIndex] = useState(0);
     const [showAll, setShowAll] = useState(false);
-
+    const isMobile = useMediaQuery("(min-width:600px)");
     const [cardData, setCardData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -76,7 +76,7 @@ const SecondBlogSection = () => {
                         }}
 
                     >
-                        <ChevronLeftIcon onClick={previous} style={{ width: '14%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
+                        <ChevronLeftIcon onClick={previous} style={{ width: isMobile ? '14%' : '100%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
                     </button>
                     <button
                         style={{
@@ -99,7 +99,7 @@ const SecondBlogSection = () => {
                         }}
 
                     >
-                        <ChevronRightIcon onClick={next} style={{ width: '14%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
+                        <ChevronRightIcon onClick={next} style={{ width: isMobile ? '14%' : '100%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
                     </button>
                 </Grid>
             </Grid>

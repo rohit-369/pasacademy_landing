@@ -113,35 +113,37 @@ const CalenderSection = () => {
                         <Box sx={{ flexGrow: 1 }}>
                             <Box sx={{ flexGrow: 1 }}>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={1.5}>
+                                    <Grid item xs={6} sm={1.5} md={1.5}>
                                         <img alt='' width={'72%'} src={USC} />
                                     </Grid>
-                                    <Grid item xs={1.5}>
+                                    <Grid item xs={6} sm={1.5} md={1.5}>
                                         <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
                                     </Grid>
-                                    <Grid item xs={6} mt={2}>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontSize={'31px'}
-                                            fontWeight={'600'}
-                                            color={'#fff'}
-                                            width={'130%'}
-                                        >
-                                            Online UPSC - MPPSC Coaching
-                                        </Typography>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontSize={'18px'}
-                                            fontWeight={'500'}
-                                            color={'#FFFF00'}
-                                            width={'110%'}
-                                        >
-                                            Best Coaching for online / classroom UPSC CSE and MPPSC
-                                        </Typography>
+                                    <Grid item xs={12} sm={6} mt={2}>
+                                        <Box position={'relative'} top={'20px'}>
+                                            <Typography
+                                                fontFamily={'Inter'}
+                                                fontSize={'31px'}
+                                                fontWeight={'600'}
+                                                color={'#fff'}
+                                                width={'100%'}
+                                            >
+                                                Online UPSC - MPPSC Coaching
+                                            </Typography>
+                                            <Typography
+                                                fontFamily={'Inter'}
+                                                fontSize={'18px'}
+                                                fontWeight={'500'}
+                                                color={'#FFFF00'}
+                                                width={'110%'}
+                                            >
+                                                Best Coaching for online / classroom UPSC CSE and MPPSC
+                                            </Typography>
+                                        </Box>
                                     </Grid>
-                                    <Grid item xs={3}
+                                    <Grid item xs={12} sm={3}
                                         display={'flex'}
-                                        justifyContent={'end'}
+                                        justifyContent={['center', 'end']}
                                         alignItems={'center'}
                                     >
                                         <Button
@@ -188,35 +190,37 @@ const CalenderSection = () => {
                         <Box sx={{ flexGrow: 1 }}>
                             <Box sx={{ flexGrow: 1 }}>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={1.5}>
+                                    <Grid item xs={6} sm={1.5} md={1.5}>
                                         <img alt='' width={'72%'} src={USC} />
                                     </Grid>
-                                    <Grid item xs={1.5}>
+                                    <Grid item xs={6} sm={1.5} md={1.5}>
                                         <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
                                     </Grid>
-                                    <Grid item xs={6} mt={2}>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontSize={'31px'}
-                                            fontWeight={'600'}
-                                            color={'#fff'}
-                                            width={'130%'}
-                                        >
-                                            Online UPSC - MPPSC Coaching
-                                        </Typography>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontSize={'18px'}
-                                            fontWeight={'500'}
-                                            color={'#FFFF00'}
-                                            width={'110%'}
-                                        >
-                                            Indore Best Coaching for online / classroom UPSC CSE and MPPSC
-                                        </Typography>
+                                    <Grid item xs={12} sm={6} mt={2}>
+                                        <Box position={'relative'} top={'20px'}>
+                                            <Typography
+                                                fontFamily={'Inter'}
+                                                fontSize={'31px'}
+                                                fontWeight={'600'}
+                                                color={'#fff'}
+                                                width={'100%'}
+                                            >
+                                                Online UPSC - MPPSC Coaching
+                                            </Typography>
+                                            <Typography
+                                                fontFamily={'Inter'}
+                                                fontSize={'18px'}
+                                                fontWeight={'500'}
+                                                color={'#FFFF00'}
+                                                width={'110%'}
+                                            >
+                                                Indore Best Coaching for online / classroom UPSC CSE and MPPSC
+                                            </Typography>
+                                        </Box>
                                     </Grid>
-                                    <Grid item xs={3}
+                                    <Grid item xs={12} sm={3}
                                         display={'flex'}
-                                        justifyContent={'end'}
+                                        justifyContent={['center', 'end']}
                                         alignItems={'center'}
                                     >
                                         <Button
@@ -243,7 +247,7 @@ const CalenderSection = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
-                    <Card sx={{ maxWidth: 360, height: 670 }}>
+                    <Card sx={{ maxWidth: 360, height: ['670', 'auto'] }}>
                         <CardContent>
                             <Box
                                 sx={{

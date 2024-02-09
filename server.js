@@ -72,23 +72,23 @@ app.get('/category', (req, res) => {
     });
 });
 
-// app.get('/faqList', (req, res) => {
-//     const query = `SELECT * FROM wp_posts 
-//     LEFT JOIN wp_term_relationships ON wp_term_relationships.object_id = wp_posts.ID 
-//     LEFT JOIN wp_term_taxonomy ON wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id 
-//     LEFT JOIN wp_terms ON wp_terms.term_id = wp_term_taxonomy.term_id 
-//     WHERE wp_posts.post_type = 'post' 
-//     AND wp_posts.post_status = 'publish' 
-//     AND wp_terms.name = 'FAQ'`;
-//     con.query(query, (err, results) => {
-//         if (err) {
-//             console.error("Error executing MySQL query: " + err.stack);
-//             res.status(500).send("Internal Server Error");
-//             return;
-//         }
-//         res.json(results);
-//     });
-// });
+app.get('/faqList', (req, res) => {
+    const query = `SELECT * FROM wp_posts 
+    LEFT JOIN wp_term_relationships ON wp_term_relationships.object_id = wp_posts.ID 
+    LEFT JOIN wp_term_taxonomy ON wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id 
+    LEFT JOIN wp_terms ON wp_terms.term_id = wp_term_taxonomy.term_id 
+    WHERE wp_posts.post_type = 'post' 
+    AND wp_posts.post_status = 'publish' 
+    AND wp_terms.name = 'FAQ'`
+    con.query(query, (err, results) => {
+        if (err) {
+            console.error("Error executing MySQL query: " + err.stack);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
+        res.json(results);
+    });
+});
 
 app.get('/getContentById/:id', bodyParser.json(), (req, res) => {
     const postId = req.params.id;

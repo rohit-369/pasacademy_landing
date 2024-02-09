@@ -65,6 +65,8 @@ const CurrentAffairSection = () => {
         fetchCurrentAffiar();
     }, []);
 
+    // console.log('data', data);
+
     const handleCurrentAffairPage = (data) => {
         navigate(`/currentAffair/${data?.ID}`);
     };
@@ -167,7 +169,7 @@ const CurrentAffairSection = () => {
 
                 <Grid item xs={12} sm={6} md={6}>
                     <Grid container spacing={2}>
-                        {data.slice(index, index + 3).map((data, index) => {
+                        {data.slice(index, index + 2).map((data, index) => {
                             const extractImageUrlFromPostContent = (post_content) => {
                                 const parser = new DOMParser();
                                 const doc = parser.parseFromString(post_content, 'text/html');
@@ -262,112 +264,101 @@ const CurrentAffairSection = () => {
                 {
                     // showAll
                     //     ?
-                    cardData.map((data) => (
-                        <Grid item xs={12} sm={3} md={3} key={data.id}>
-                            <Card sx={{ maxWidth: 345 }}>
-                                <CardMedia
-                                    sx={{ height: 200 }}
-                                    image={data?.guid}
-                                // title="green iguana"
-                                />
-                                <CardContent>
-                                    <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                                        {data?.post_title}
-                                    </Typography>
-                                    <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
-                                        {parse(data?.post_content)}
-                                    </Typography>
-                                </CardContent>
-                                <CardActions
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-evenly',
-                                        alignItems: 'center'
-                                    }}
-                                >
-                                    <Button
+                    data.map((data) => {
+                        const extractImageUrlFromPostContent = (post_content) => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(post_content, 'text/html');
+                            const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                            if (imageElement) {
+                                return imageElement.getAttribute('src');
+                            } else {
+                                return null;
+                            }
+                        }
+                        const imageUrl = extractImageUrlFromPostContent(data?.post_content);
+                        const first10Words = data?.post_content
+                            .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                            .split(/\s+/) // Split into words
+                            .slice(0, 20) // Take the first 10 words
+                            .join(' ');
+                        return (
+                            <Grid item xs={12} sm={3} md={3} key={data.id}>
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardMedia
+                                        sx={{ height: 200 }}
+                                        image={imageUrl}
+                                    // title="green iguana"
+                                    />
+                                    <CardContent>
+                                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                                            {data?.post_title}
+                                        </Typography>
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
+                                            {parse(first10Words)}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions
                                         sx={{
-                                            background: '#FFE4E4',
-                                            padding: '5px',
-                                            alignItems: 'flex-end',
-                                            gap: '10px',
-                                            borderRadius: '5px',
-                                            textTransform: 'none',
-                                            fontSize: '12px',
-                                            fontWeight: '500',
-                                            color: "#000",
-                                            '&:hover': {
-                                                background: '#FFE4E4',
-                                            },
+                                            display: 'flex',
+                                            justifyContent: 'space-evenly',
+                                            alignItems: 'center'
                                         }}
                                     >
-                                        Tag 1
-                                    </Button>
-                                    <Button
+                                        <Button
+                                            sx={{
+                                                borderRadius: '30px',
+                                                textTransform: 'none',
+                                                fontWeight: '600',
+                                                fontSize: '11px',
+                                                color: '#6941C6',
+                                                background: '#F9F5FF'
+                                            }}
+                                        >
+                                            {data.name}
+                                        </Button>
+                                        <Button
+                                            sx={{
+                                                borderRadius: '30px',
+                                                textTransform: 'none',
+                                                fontWeight: '600',
+                                                fontSize: '11px',
+                                                color: '#6941C6',
+                                                background: '#F9F5FF'
+                                            }}
+                                        >
+                                            {data.name}
+                                        </Button>
+                                    </CardActions>
+                                    <CardActions
                                         sx={{
-                                            background: '#FFE4E4',
-                                            padding: '5px',
-                                            alignItems: 'flex-end',
-                                            gap: '10px',
-                                            borderRadius: '5px',
-                                            textTransform: 'none',
-                                            fontSize: '12px',
-                                            fontWeight: '500',
-                                            color: "#000",
-                                            '&:hover': {
-                                                background: '#FFE4E4',
-                                            },
+                                            display: 'flex',
+                                            justifyContent: 'space-between'
                                         }}
                                     >
-                                        Tag 2
-                                    </Button>
-                                    <Button
-                                        sx={{
-                                            background: '#FFE4E4',
-                                            padding: '5px',
-                                            alignItems: 'flex-end',
-                                            gap: '10px',
-                                            borderRadius: '5px',
-                                            textTransform: 'none',
-                                            fontSize: '12px',
-                                            fontWeight: '500',
-                                            color: "#000",
-                                            '&:hover': {
-                                                background: '#FFE4E4',
-                                            },
-                                        }}
-                                    >
-                                        Tag 3
-                                    </Button>
-                                </CardActions>
-                                <CardActions
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between'
-                                    }}
-                                >
-                                    <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
-                                        {moment(data?.post_date).format('MMMM Do YYYY')}
-                                    </Typography>
-                                    <Button
-                                        sx={{
-                                            // background: '#F6E9FF',
-                                            padding: '16px 32px',
-                                            alignItems: 'flex-end',
-                                            gap: '10px',
-                                            borderRadius: '15px',
-                                            textTransform: 'none',
-                                            fontSize: '14px',
-                                            fontWeight: '700',
-                                            color: "#8976FD"
-                                        }}
-                                    >
-                                        Read More
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                        </Grid>
-                    ))
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                                            {moment(data?.post_date).format('MMMM Do YYYY')}
+                                        </Typography>
+                                        <Button
+                                            sx={{
+                                                // background: '#F6E9FF',
+                                                padding: '16px 32px',
+                                                alignItems: 'flex-end',
+                                                gap: '10px',
+                                                borderRadius: '15px',
+                                                textTransform: 'none',
+                                                fontSize: '14px',
+                                                fontWeight: '700',
+                                                color: "#8976FD"
+                                            }}
+                                        >
+                                            Read More
+                                        </Button>
+                                    </CardActions>
+                                </Card>
+                            </Grid>
+                        )
+                    })
                     // : cardData.slice(index, index + 4).map((data) => (
                     //     <Grid item xs={12} sm={4} md={3} key={data.id}>
                     //         <Card sx={{ maxWidth: 345 }}>

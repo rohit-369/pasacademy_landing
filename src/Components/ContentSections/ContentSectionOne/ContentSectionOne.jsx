@@ -1,6 +1,6 @@
 import { Box, Card, CardActions, CardContent, CardMedia, Grid, Paper, Typography } from '@mui/material'
 import React, { useState } from 'react';
-// import phoneSvg from './Images/phoneSvg.svg'
+import phoneSvg2 from './Images/phoneView2.jpeg'
 import phoneSvg from './Images/phoneView.jpeg'
 import androidPhone from './Images/androidPhone.svg'
 import tabletSvg from './Images/tabletSvg.svg'
@@ -11,10 +11,8 @@ import windowsStoreButton from './Images/windowsStoreButton.svg'
 
 const ContentSectionOne = () => {
 
-    const [type, setType] = useState('mobile');
-
     return (
-        <Box sx={{ flexGrow: 1, pt: 8 }}>
+        <Box sx={{ flexGrow: 1, p: 4 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={6} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                     <div
@@ -23,7 +21,7 @@ const ContentSectionOne = () => {
                             justifyContent: 'center'
                         }}
                     >
-                        <img alt='' width={'45%'} style={{ position: 'relative', left: '70px' }} src={phoneSvg} />
+                        <img alt='' width={'45%'} style={{ position: 'relative', left: ['70px', '0px'] }} src={phoneSvg} />
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} p={2}>

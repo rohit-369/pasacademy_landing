@@ -1,10 +1,13 @@
 import React from 'react';
 import backgroundImage from './Images/bgImage.svg'
 import appLogo from './Images/appLogosvg.svg'
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import smssvg from './Images/smssvg.svg'
 
 const SectionThree = () => {
+
+    const isMobile = useMediaQuery("(min-width:600px)");
+
     return (
         <Box
             sx={{
@@ -24,7 +27,7 @@ const SectionThree = () => {
                 alignItems={'center'}
                 mb={5}
             >
-                <img width={'12%'} alt='' src={appLogo} />
+                <img width={isMobile ? '12%' : '100%'} alt='' src={appLogo} />
             </Box>
             <Box mb={5}>
                 <Typography
@@ -62,7 +65,7 @@ const SectionThree = () => {
                             fontSize: '16px',
                             color: '#000',
                             gap: '10px',
-                            width: ['100%', '15%'],
+                            width: ['90%', '15%'],
                             borderRadius: '0px'
                         }}
                     >

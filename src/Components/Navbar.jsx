@@ -13,6 +13,7 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import AdbIcon from '@mui/icons-material/Adb';
 import CourseNetwrok from '../Network';
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -20,9 +21,20 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const Navbar = () => {
 
     const instId = '94'
-
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+    const [openFree, setOpenFree] = React.useState(false);
+    const anchorRefFree = React.useRef(null);
+    const [courses, setCourses] = React.useState([]);
+    const [anchorElF, setAnchorElF] = React.useState(null);
+    const openF = Boolean(anchorElF);
+    const prevOpen = React.useRef(open);
+    const prevOpenFree = React.useRef(openFree);
+    const [anchorElM, setAnchorElM] = React.useState(null);
+    const openM = Boolean(anchorElM);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -39,13 +51,6 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
-
-    const [open, setOpen] = React.useState(false);
-    const anchorRef = React.useRef(null);
-    const [openFree, setOpenFree] = React.useState(false);
-    const anchorRefFree = React.useRef(null);
-    const [courses, setCourses] = React.useState([]);
-
     const getAllCourses = async () => {
         const response = await CourseNetwrok.fetchCourses(instId);
         setCourses(response.courses);
@@ -55,49 +60,48 @@ const Navbar = () => {
         getAllCourses();
     }, []);
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
-    };
+    // const handleToggle = () => {
+    //     setOpen((prevOpen) => !prevOpen);
+    // };
 
-    const handleToggleFree = () => {
-        setOpenFree((prevOpenFree) => !prevOpenFree);
-    };
+    // const handleToggleFree = () => {
+    //     setOpenFree((prevOpenFree) => !prevOpenFree);
+    // };
 
-    const handleClose = (event) => {
-        if (anchorRef.current && anchorRef.current.contains(event.target)) {
-            return;
-        }
+    // const handleClose = (event) => {
+    //     if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //         return;
+    //     }
 
-        setOpen(false);
-    };
+    //     setOpen(false);
+    // };
 
-    const handleCloseFree = (event) => {
-        if (anchorRefFree.current && anchorRefFree.current.contains(event.target)) {
-            return;
-        }
-        setOpenFree(false);
-    };
+    // const handleCloseFree = (event) => {
+    //     if (anchorRefFree.current && anchorRefFree.current.contains(event.target)) {
+    //         return;
+    //     }
+    //     setOpenFree(false);
+    // };
 
-    function handleListKeyDown(event) {
-        if (event.key === 'Tab') {
-            event.preventDefault();
-            setOpen(false);
-        } else if (event.key === 'Escape') {
-            setOpen(false);
-        };
-    };
+    // function handleListKeyDown(event) {
+    //     if (event.key === 'Tab') {
+    //         event.preventDefault();
+    //         setOpen(false);
+    //     } else if (event.key === 'Escape') {
+    //         setOpen(false);
+    //     };
+    // };
 
-    function handleListKeyDownFree(event) {
-        if (event.key === 'Tab') {
-            event.preventDefault();
-            setOpenFree(false);
-        } else if (event.key === 'Escape') {
-            setOpenFree(false);
-        };
-    };
+    // function handleListKeyDownFree(event) {
+    //     if (event.key === 'Tab') {
+    //         event.preventDefault();
+    //         setOpenFree(false);
+    //     } else if (event.key === 'Escape') {
+    //         setOpenFree(false);
+    //     };
+    // };
 
     // return focus to the button when we transitioned from !open -> open
-    const prevOpen = React.useRef(open);
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
@@ -106,7 +110,7 @@ const Navbar = () => {
         prevOpen.current = open;
     }, [open]);
 
-    const prevOpenFree = React.useRef(openFree);
+    
     React.useEffect(() => {
         if (prevOpenFree.current === true && openFree === false) {
             anchorRefFree.current.focus();
@@ -115,10 +119,6 @@ const Navbar = () => {
         prevOpenFree.current = openFree;
     }, [openFree]);
 
-    const [anchorElM, setAnchorElM] = React.useState(null);
-
-    const openM = Boolean(anchorElM);
-
     const handleClick = (event) => {
         setAnchorElM(event.currentTarget);
     };
@@ -126,18 +126,22 @@ const Navbar = () => {
         setAnchorElM(null);
     };
 
-    const [anchorElF, setAnchorElF] = React.useState(null);
-
-    const openF = Boolean(anchorElF);
-
     const handleClickF = (event) => {
         setAnchorElF(event.currentTarget);
     };
     const handleCloseF = () => {
         setAnchorElF(null);
+        navigate('/content');
     };
 
+    const handleBuyCourse = (item) => {
+        const url = `https://iframe.classiolabs.com/buyCourseDetails/` + `?iframeId=12&courseId=${item?.id}&folderId=${0}&on-click=${true}`
 
+        // const url = `${iframeData?.redirectUri}/buyCourseDetails/${item?.id}/0`
+        window.open(url, '_blank', 'noreferrer');
+        // navigate(`/buyCourseDetails/${item.id}`);
+        handleCloseM();
+    };
 
     return (
         <AppBar position="static"
@@ -279,7 +283,10 @@ const Navbar = () => {
                                 .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
                                 .map((filteredCourse, index) => {
                                     return (
-                                        <MenuItem onClick={handleCloseM}>
+                                        <MenuItem
+                                            // onClick={handleCloseM}
+                                            onClick={() => handleBuyCourse(filteredCourse)}
+                                        >
                                             {filteredCourse.title}
                                         </MenuItem>
                                     )

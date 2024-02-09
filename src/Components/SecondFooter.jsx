@@ -1,7 +1,10 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 
 const SecondFooter = () => {
+
+    const isMobile = useMediaQuery("(min-width:600px)");
+
     return (
         <Box sx={{ flexGrow: 1, background: '#540000' }}>
             <Grid container spacing={2}>
@@ -67,7 +70,9 @@ const SecondFooter = () => {
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
                     <iframe
-                        width="80%"
+                        style={{
+                            width: isMobile ? '80%' : '100%'
+                        }}
                         height="250"
                         src="https://www.youtube.com/embed/WTXTCoLBlkY"
                         title="YouTube video player"

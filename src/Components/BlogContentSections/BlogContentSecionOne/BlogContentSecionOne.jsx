@@ -13,39 +13,92 @@ import moment from 'moment';
 
 const BlogContentSecionOne = ({ blogData }) => {
 
-    const [value, setValue] = React.useState(dayjs('2022-04-17'));
+    const [value, setValue] = useState(null);
 
-    console.log('blogData', blogData);
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const date = new Date();
+    const day = date.getDate() - 3;
+    const monthName = months[date.getMonth()];
+    const year = date.getFullYear();
+    const formattedDate = `${day} ${monthName} ${year}`;
+
+    const day2 = date.getDate() - 2;
+    const formattedDate1 = `${day2} ${monthName} ${year}`;
+
+    const day3 = date.getDate() - 1;
+    const formattedDate3 = `${day3} ${monthName} ${year}`;
+
+    const handleChangeDate = (newValue) => {
+        const dateObj = new Date(newValue);
+
+        // Extract date components
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Adding 1 to month as it starts from 0
+        const date = String(dateObj.getDate()).padStart(2, '0');
+
+        // Extract time components
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+
+        // Concatenate components in the desired format
+        const formattedDate = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+        setValue(newValue);
+    };
 
     return (
-        <Box m='20px' >
+        <Box m='20px'>
             <Grid container spacing={2}>
                 {/* {Array.isArray(blogData) && blogData.map((data, index) => (
                     <Typography key={index}>
                         {data?.post_date}
                     </Typography>
                 ))} */}
-                {Array.isArray(blogData) && blogData.map((data, index) => (
-                    <Grid item xs={12} sm={8} md={8} p={3}>
-                        <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
-                            <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
-                                {data?.post_title}
+                {Array.isArray(blogData) && blogData.map((data, index) => {
+                    const extractImageUrlFromPostContent = (post_content) => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(post_content, 'text/html');
+                        const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                        if (imageElement) {
+                            return imageElement.getAttribute('src');
+                        } else {
+                            return null;
+                        }
+                    }
+                    const first10Words = data?.post_content
+                        .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                        .split(/\s+/) // Split into words
+                        .slice(0, 10) // Take the first 10 words
+                        .join(' ');
+                    const imageUrl = extractImageUrlFromPostContent(data?.post_content);
+                    return (
+                        <Grid item xs={12} sm={8} md={8} p={3}>
+                            <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
+                                <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
+                                    {data?.post_title}
+                                </Typography>
+                                <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
+                                    {moment(data?.post_date).format('MMMM Do YYYY')}
+                                </Typography>
+                            </Box>
+                            <img alt='' src={imageUrl} />
+                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
+                                {parse(first10Words)}
                             </Typography>
-                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
-                                {moment(data?.post_date).format('MMMM Do YYYY')}
-                            </Typography>
-                        </Box>
-                        <img alt='' src={data?.guid} />
-                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
-                            {parse(data?.post_content)}
-                        </Typography>
-                    </Grid>
-                ))}
+                        </Grid>
+                    )
+                }
+                )}
                 <Grid item xs={12} sm={4} md={4}
                     display={'flex'}
                     justifyContent={'center'}
                 >
-                    <Card sx={{ maxWidth: 360, height: 670 }}>
+                    <Card sx={{ maxWidth: 360, height: ['670', 'auto'] }}>
                         <CardContent>
                             <Box
                                 sx={{
@@ -88,7 +141,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -124,7 +177,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate1}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -160,7 +213,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         }}
                                     >
                                         <EventAvailableIcon />
-                                        29 January 2024
+                                        {formattedDate3}
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={6}
                                         sx={{
@@ -187,7 +240,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DateCalendar', 'DateCalendar']}>
                                     <DemoItem>
-                                        <DateCalendar defaultValue={dayjs('2022-04-17')} />
+                                        <DateCalendar defaultValue={value} onChange={handleChangeDate} />
                                     </DemoItem>
                                 </DemoContainer>
                             </LocalizationProvider>

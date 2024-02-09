@@ -15,6 +15,12 @@ import SectionFourth from '../Components/HomeSections/SectionFourth/SectionFourt
 import SectionGellary from '../Components/HomeSections/SectionGellary/SectionGellary'
 
 const Home = () => {
+
+    const handleWhatsapp = () => {
+        const url = `https://api.whatsapp.com/send?phone=919630020141`
+        window.open(url, '_blank', 'noreferrer');
+    };
+
     return (
         <div>
             <Header />
@@ -31,6 +37,7 @@ const Home = () => {
             <Footer />
             <div style={{ position: 'fixed', left: '-45px', top: '90%', transform: 'translateY(-50%)', padding: '10px', width: '100%', display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                 <Button variant="contained" color="primary"
+                    onClick={handleWhatsapp}
                     sx={{
                         textTransform: 'none',
                         background: '#28B71D',

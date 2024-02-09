@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import USC from './Images/USC.svg'
 import Ellipse1080 from './Images/Ellipse1080.svg'
@@ -9,6 +9,7 @@ import moment from 'moment'
 
 const BlogContentSectionTwo = () => {
 
+  const isMobileView = useMediaQuery("(min-width:600px)");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -64,35 +65,37 @@ const BlogContentSectionTwo = () => {
             <Box sx={{ flexGrow: 1 }}>
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
-                  <Grid item xs={1.5}>
+                  <Grid item xs={6} sm={1.5} md={1.5}>
                     <img alt='' width={'72%'} src={USC} />
                   </Grid>
-                  <Grid item xs={1.5}>
+                  <Grid item xs={6} sm={1.5} md={1.5}>
                     <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
                   </Grid>
-                  <Grid item xs={6} mt={2}>
-                    <Typography
-                      fontFamily={'Inter'}
-                      fontSize={'31px'}
-                      fontWeight={'600'}
-                      color={'#fff'}
-                      width={'130%'}
-                    >
-                      Online UPSC - MPPSC Coaching
-                    </Typography>
-                    <Typography
-                      fontFamily={'Inter'}
-                      fontSize={'18px'}
-                      fontWeight={'500'}
-                      color={'#FFFF00'}
-                      width={'110%'}
-                    >
-                      Best Coaching for online / classroom UPSC CSE and MPPSC
-                    </Typography>
+                  <Grid item xs={12} sm={6} mt={2}>
+                    <Box position={'relative'} top={'20px'}>
+                      <Typography
+                        fontFamily={'Inter'}
+                        fontSize={'31px'}
+                        fontWeight={'600'}
+                        color={'#fff'}
+                        width={'100%'}
+                      >
+                        Online UPSC - MPPSC Coaching
+                      </Typography>
+                      <Typography
+                        fontFamily={'Inter'}
+                        fontSize={'18px'}
+                        fontWeight={'500'}
+                        color={'#FFFF00'}
+                        width={'110%'}
+                      >
+                        Best Coaching for online / classroom UPSC CSE and MPPSC
+                      </Typography>
+                    </Box>
                   </Grid>
-                  <Grid item xs={3}
+                  <Grid item xs={12} sm={3}
                     display={'flex'}
-                    justifyContent={'end'}
+                    justifyContent={['center', 'end']}
                     alignItems={'center'}
                   >
                     <Button
@@ -152,7 +155,7 @@ const BlogContentSectionTwo = () => {
                 }}
 
               >
-                <ChevronLeftIcon onClick={previous} style={{ width: '30%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
+                <ChevronLeftIcon onClick={previous} style={{ width: isMobileView ? '30%' : "100%", background: '#FECACA', borderRadius: '10px', color: 'white' }} />
               </button>
               <button
                 style={{
@@ -175,51 +178,70 @@ const BlogContentSectionTwo = () => {
                 }}
 
               >
-                <ChevronRightIcon onClick={next} style={{ width: '30%', background: '#FECACA', borderRadius: '10px', color: 'white' }} />
+                <ChevronRightIcon onClick={next} style={{ width: isMobileView ? '30%' : "100%", background: '#FECACA', borderRadius: '10px', color: 'white' }} />
               </button>
             </Grid>
             <Grid container spacing={2} p={2}>
               {
-                data.slice(index, index + 1).map((data) => (
-                  <Grid item xs={12} sm={12} md={12} key={data.id}>
-                    <Card sx={{ maxWidth: 525 }}>
-                      <CardMedia
-                        sx={{ height: 250 }}
-                        image={data?.guid}
-                      // title="green iguana"
-                      />
-                      <CardContent>
-                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                          {data?.post_title}
-                        </Typography>
-                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
-                          {parse(data?.post_content)}
-                        </Typography>
-                      </CardContent>
-                      <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'} mt={'-15px'} ml={1}>
-                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
-                          {moment(data?.post_date).format('MMMM Do YYYY')}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            // background: '#F6E9FF',
-                            padding: '16px 32px',
-                            alignItems: 'flex-end',
-                            gap: '10px',
-                            borderRadius: '15px',
-                            textTransform: 'none',
-                            fontSize: '14px',
-                            fontWeight: '700',
-                            color: "#8976FD"
-                          }}
-                        >
-                          Read More
-                        </Typography>
-                      </Box>
-                    </Card>
-                  </Grid>
-                ))
-              }
+                data.slice(index, index + 1).map((data) => {
+                  const extractImageUrlFromPostContent = (post_content) => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(post_content, 'text/html');
+                    const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+                    if (imageElement) {
+                      return imageElement.getAttribute('src');
+                    } else {
+                      return null;
+                    }
+                  }
+                  const first10Words = data?.post_content
+                    .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                    .split(/\s+/) // Split into words
+                    .slice(0, 10) // Take the first 10 words
+                    .join(' ');
+                  const imageUrl = extractImageUrlFromPostContent(data?.post_content);
+                  return (
+                    <Grid item xs={12} sm={12} md={12} key={data.id}>
+                      <Card sx={{ maxWidth: 525 }}>
+                        <CardMedia
+                          sx={{ height: 250 }}
+                          image={imageUrl}
+                        // title="green iguana"
+                        />
+                        <CardContent>
+                          <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                            {data?.post_title}
+                          </Typography>
+                          <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
+                            {parse(first10Words)}
+                          </Typography>
+                        </CardContent>
+                        <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'} mt={'-15px'} ml={1}>
+                          <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                            {moment(data?.post_date).format('MMMM Do YYYY')}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              // background: '#F6E9FF',
+                              padding: '16px 32px',
+                              alignItems: 'flex-end',
+                              gap: '10px',
+                              borderRadius: '15px',
+                              textTransform: 'none',
+                              fontSize: '14px',
+                              fontWeight: '700',
+                              color: "#8976FD"
+                            }}
+                          >
+                            Read More
+                          </Typography>
+                        </Box>
+                      </Card>
+                    </Grid>
+                  )
+                }
+                )}
             </Grid>
           </Grid>
         </Grid>
