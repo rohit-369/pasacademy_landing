@@ -140,4 +140,4 @@ const ContentSectionOne = () => {
     )
 }
 
-export default ContentSectionOne
+export default ContentSectionOne;

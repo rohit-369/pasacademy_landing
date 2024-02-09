@@ -20,8 +20,10 @@ const ContentSectionTwo = () => {
                 backgroundSize: 'cover', // or 'contain' depending on your needs
                 backgroundRepeat: 'no-repeat',
                 height: '100%',
-                // padding: 1,
-                // pt: '60px'
+                flexGrow: 1,
+                // width: '100%',
+                paddingTop: '5px',
+                pt: '1px',
             }}
         >
             <Grid container spacing={1} pt={5}>

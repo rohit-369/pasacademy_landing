@@ -89,6 +89,11 @@ const BlogSection = ({ cardData }) => {
                 </Grid>
             </Grid>
             <Grid container spacing={2} p={2}>
+                {cardData.length === 0 ?
+                    <Typography fontFamily={'Inter'} fontSize={'20px'} >
+                        No Blogs Available
+                    </Typography>
+                    : ''}
                 {
                     showAll
                         ?

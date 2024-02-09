@@ -27,7 +27,10 @@ const Header = () => {
                             fontWeight: '400',
                             lineHeight: '24px',
                             textTransform: 'none',
-                            width: ['80%', '15%']
+                            width: ['80%', '15%'],
+                            '&:hover': {
+                                backgroundColor: '#9D0009', // Change to desired hover background color
+                            },
                         }}
                     >
                         Register Now

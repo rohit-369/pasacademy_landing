@@ -15,9 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CourseNetwrok from '../Network';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
+const pages = ['Courses', 'Interview Guidance', 'Answer Writing Program', `Topper's Strategy`];
 const Navbar = () => {
 
     const instId = '94'
@@ -35,6 +33,8 @@ const Navbar = () => {
     const prevOpenFree = React.useRef(openFree);
     const [anchorElM, setAnchorElM] = React.useState(null);
     const openM = Boolean(anchorElM);
+    const [showCoursesSubMenu, setShowCoursesSubMenu] = React.useState(false);
+    const [showFreeResourcesSubMenu, setShowFreeResourcesSubMenu] = React.useState(false);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -110,7 +110,7 @@ const Navbar = () => {
         prevOpen.current = open;
     }, [open]);
 
-    
+
     React.useEffect(() => {
         if (prevOpenFree.current === true && openFree === false) {
             anchorRefFree.current.focus();
@@ -131,6 +131,7 @@ const Navbar = () => {
     };
     const handleCloseF = () => {
         setAnchorElF(null);
+        handleCloseNavMenu();
         navigate('/content');
     };
 
@@ -141,6 +142,18 @@ const Navbar = () => {
         window.open(url, '_blank', 'noreferrer');
         // navigate(`/buyCourseDetails/${item.id}`);
         handleCloseM();
+        handleCloseNavMenu();
+    };
+
+    const handlNavigateHome = () => {
+        navigate('/')
+    };
+
+    const handleCoursesClick = () => {
+        setShowCoursesSubMenu(!showCoursesSubMenu);
+    };
+    const handleFreeResourcesClick = () => {
+        setShowFreeResourcesSubMenu(!showFreeResourcesSubMenu);
     };
 
     return (
@@ -161,11 +174,12 @@ const Navbar = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        // href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                         }}
+                        onClick={handlNavigateHome}
                     >
                         <img alt='' src={logo} />
                     </Typography>
@@ -198,11 +212,57 @@ const Navbar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem
+                                key="Courses"
+                                onClick={handleCoursesClick}
+                                onMouseEnter={handleCoursesClick} // Optional: Show submenu on hover
+                                onMouseLeave={() => setShowCoursesSubMenu(false)} // Optional: Hide submenu on mouse leave
+                            >
+                                <Typography textAlign="center">Courses</Typography>
+                                <Menu
+                                    id="courses-submenu"
+                                    anchorEl={anchorElNav}
+                                    open={showCoursesSubMenu}
+                                    onClose={() => setShowCoursesSubMenu(false)}
+                                >
+                                    {courses && courses
+                                        .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
+                                        .map((filteredCourse, index) => {
+                                            return (
+                                                <MenuItem
+                                                    // onClick={handleCloseM}
+                                                    onClick={() => handleBuyCourse(filteredCourse)}
+                                                >
+                                                    {filteredCourse.title}
+                                                </MenuItem>
+                                            )
+                                        })}
+                                </Menu>
+                            </MenuItem>
+                            <MenuItem
+                                key="Free Resources"
+                                onClick={handleFreeResourcesClick}
+                                onMouseEnter={handleFreeResourcesClick} // Optional: Show submenu on hover
+                                onMouseLeave={() => setShowFreeResourcesSubMenu(false)} // Optional: Hide submenu on mouse leave
+                            >
+                                <Typography textAlign="center">Free Resources</Typography>
+                                <Menu
+                                    id="free-resources-submenu"
+                                    anchorEl={anchorElNav}
+                                    open={showFreeResourcesSubMenu}
+                                    onClose={() => setShowFreeResourcesSubMenu(false)}
+                                >
+                                    <MenuItem onClick={handleCloseF}>Current Affair</MenuItem>
+                                    <MenuItem onClick={handleCloseF}>Blogs</MenuItem>
+                                </Menu>
+                            </MenuItem>
+                            {pages
+                                .filter((page) => page !== 'Courses') // Exclude Courses page from the list
+                                .map((page) => (
+                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                        <Typography textAlign="center">{page}</Typography>
+                                    </MenuItem>
+                                ))}
                         </Menu>
                     </Box>
                     <Box
@@ -366,7 +426,7 @@ const Navbar = () => {
                             Topper’s Strategy
                         </Button>
                     </Box>
-                    <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                    {/* <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                         <Button
                             sx={{
                                 background: '#FFD80D',
@@ -383,7 +443,7 @@ const Navbar = () => {
                             <img alt='' src={capLogo} />
                             Free
                         </Button>
-                    </Box>
+                    </Box> */}
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                         <Button
                             sx={{

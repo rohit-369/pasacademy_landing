@@ -360,14 +360,16 @@ const SectionFourth = () => {
                         borderRadius: '8px',
                         textTransform: 'none',
                         p: '5px 25px 5px 25px',
+                        '&:hover': {
+                            backgroundColor: '#9D0009',
+                        },
                     }}
                 >
                     {showAll ? 'Show Less' : 'View All'}
                 </Button>
             </Box>
-
         </Box>
     )
 }
 
-export default SectionFourth
+export default SectionFourth;

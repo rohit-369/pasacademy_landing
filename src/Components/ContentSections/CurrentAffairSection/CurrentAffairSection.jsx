@@ -9,36 +9,36 @@ import { useNavigate } from 'react-router-dom'
 
 const CurrentAffairSection = () => {
 
-    const cardData = [
-        {
-            id: 1,
-            guid: image3,
-            post_title: 'Test1',
-            post_content: 'Content 1',
-            post_date: 'Date 1'
-        },
-        {
-            id: 2,
-            guid: image3,
-            post_title: 'Test2',
-            post_content: 'Content 2',
-            post_date: 'Date 2'
-        },
-        {
-            id: 3,
-            guid: image3,
-            post_title: 'Test3',
-            post_content: 'Content 3',
-            post_date: 'Date 3'
-        },
-        {
-            id: 4,
-            guid: image3,
-            post_title: 'Test4',
-            post_content: 'Content 4',
-            post_date: 'Date 4'
-        },
-    ];
+    // const cardData = [
+    //     {
+    //         id: 1,
+    //         guid: image3,
+    //         post_title: 'Test1',
+    //         post_content: 'Content 1',
+    //         post_date: 'Date 1'
+    //     },
+    //     {
+    //         id: 2,
+    //         guid: image3,
+    //         post_title: 'Test2',
+    //         post_content: 'Content 2',
+    //         post_date: 'Date 2'
+    //     },
+    //     {
+    //         id: 3,
+    //         guid: image3,
+    //         post_title: 'Test3',
+    //         post_content: 'Content 3',
+    //         post_date: 'Date 3'
+    //     },
+    //     {
+    //         id: 4,
+    //         guid: image3,
+    //         post_title: 'Test4',
+    //         post_content: 'Content 4',
+    //         post_date: 'Date 4'
+    //     },
+    // ];
 
     const navigate = useNavigate();
     const [data, setData] = useState([]);

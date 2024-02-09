@@ -66,7 +66,10 @@ const SectionThree = () => {
                             color: '#000',
                             gap: '10px',
                             width: ['90%', '15%'],
-                            borderRadius: '0px'
+                            borderRadius: '0px',
+                            '&:hover': {
+                                backgroundColor: '#FFD80D',
+                            },
                         }}
                     >
                         <img alt='' src={smssvg} />
