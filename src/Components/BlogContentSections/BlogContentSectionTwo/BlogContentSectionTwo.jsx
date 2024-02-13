@@ -6,10 +6,12 @@ import BlogSection from '../../ContentSections/CalenderSection/BlogsSection'
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
 import parse from 'html-react-parser'
 import moment from 'moment'
+import { useNavigate } from 'react-router-dom'
 
 const BlogContentSectionTwo = () => {
 
   const isMobileView = useMediaQuery("(min-width:600px)");
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,7 +33,7 @@ const BlogContentSectionTwo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5001/blogs');
+        const response = await fetch('http://localhost:5001/currentAffairList');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -46,6 +48,10 @@ const BlogContentSectionTwo = () => {
 
     fetchData();
   }, []);
+
+  const handleReadMoreBlog = (e, data) => {
+    navigate(`/currentAffair/${data?.ID}`);
+  };
 
   return (
     <Box m='20px'>
@@ -87,7 +93,7 @@ const BlogContentSectionTwo = () => {
                         fontSize={'18px'}
                         fontWeight={'500'}
                         color={'#FFFF00'}
-                        width={'110%'}
+                        width={'100%'}
                       >
                         Best Coaching for online / classroom UPSC CSE and MPPSC
                       </Typography>
@@ -103,6 +109,7 @@ const BlogContentSectionTwo = () => {
                         borderRadius: '40px',
                         background: '#CC0000',
                         fontSize: '16px',
+                        mt: 2,
                         color: 'white',
                         textTransform: 'none',
                         padding: '5px 20px 5px 20px',
@@ -222,6 +229,7 @@ const BlogContentSectionTwo = () => {
                             {moment(data?.post_date).format('MMMM Do YYYY')}
                           </Typography>
                           <Typography
+                            onClick={(e) => handleReadMoreBlog(e, data)}
                             sx={{
                               // background: '#F6E9FF',
                               padding: '16px 32px',

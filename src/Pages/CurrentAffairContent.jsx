@@ -49,7 +49,7 @@ const CurrentAffairContent = () => {
         };
 
         fetchData();
-    }, []);
+    }, [data]);
 
 
     return (

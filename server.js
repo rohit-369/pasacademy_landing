@@ -102,7 +102,7 @@ app.get('/getContentById/:id', bodyParser.json(), (req, res) => {
         res.json(results);
     });
 });
-
+ 
 
 app.get('/currentAffairList', (req, res) => {
 

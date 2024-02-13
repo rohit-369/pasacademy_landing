@@ -4,10 +4,12 @@ import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
 import image1 from './Images/image1.svg';
 import parse from 'html-react-parser'
 import moment from 'moment/moment';
+import { useNavigate } from 'react-router-dom';
 
 const SecondBlogSection = () => {
 
     const [index, setIndex] = useState(0);
+    const navigate = useNavigate();
     const [showAll, setShowAll] = useState(false);
     const isMobile = useMediaQuery("(min-width:600px)");
     const [cardData, setCardData] = useState([]);
@@ -48,6 +50,10 @@ const SecondBlogSection = () => {
     const toggleViewAll = () => {
         setShowAll(!showAll);
     }
+
+    const handleReadMoreBlog = (e, data) => {
+        navigate(`/blogContent/${data?.ID}`);
+    };
 
     return (
         <Box m='20px'>
@@ -208,6 +214,7 @@ const SecondBlogSection = () => {
                                                 {moment(data?.post_date).format('MMMM Do YYYY')}
                                             </Typography>
                                             <Typography
+                                                onClick={(e) => handleReadMoreBlog(e, data)}
                                                 sx={{
                                                     // background: '#F6E9FF',
                                                     padding: '16px 32px',

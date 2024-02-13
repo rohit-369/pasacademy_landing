@@ -135,7 +135,7 @@ const CalenderSection = () => {
                                                 fontSize={'18px'}
                                                 fontWeight={'500'}
                                                 color={'#FFFF00'}
-                                                width={'110%'}
+                                                width={'100%'}
                                             >
                                                 Best Coaching for online / classroom UPSC CSE and MPPSC
                                             </Typography>
@@ -151,6 +151,7 @@ const CalenderSection = () => {
                                                 borderRadius: '40px',
                                                 background: '#CC0000',
                                                 fontSize: '16px',
+                                                mt: 2,
                                                 color: 'white',
                                                 textTransform: 'none',
                                                 padding: '5px 20px 5px 20px',
@@ -212,7 +213,7 @@ const CalenderSection = () => {
                                                 fontSize={'18px'}
                                                 fontWeight={'500'}
                                                 color={'#FFFF00'}
-                                                width={'110%'}
+                                                width={'100%'}
                                             >
                                                 Indore Best Coaching for online / classroom UPSC CSE and MPPSC
                                             </Typography>
@@ -228,6 +229,7 @@ const CalenderSection = () => {
                                                 borderRadius: '40px',
                                                 background: '#CC0000',
                                                 fontSize: '16px',
+                                                mt: 2,
                                                 color: 'white',
                                                 textTransform: 'none',
                                                 padding: '5px 20px 5px 20px',
@@ -281,7 +283,7 @@ const CalenderSection = () => {
                                 }}
                             >
                                 <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate)}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -292,7 +294,7 @@ const CalenderSection = () => {
                                         <EventAvailableIcon />
                                         {formattedDate}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',
@@ -317,7 +319,7 @@ const CalenderSection = () => {
                                 }}
                             >
                                 <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate1)}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -328,7 +330,7 @@ const CalenderSection = () => {
                                         <EventAvailableIcon />
                                         {formattedDate1}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',
@@ -353,7 +355,7 @@ const CalenderSection = () => {
                                 }}
                             >
                                 <Grid container spacing={2} onClick={(e) => handleDateChange(formattedDate3)}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -364,7 +366,7 @@ const CalenderSection = () => {
                                         <EventAvailableIcon />
                                         {formattedDate3}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',

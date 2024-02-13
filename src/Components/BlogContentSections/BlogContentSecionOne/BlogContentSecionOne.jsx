@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import dayjs from 'dayjs';
 import newsLogo from './Images/news.svg'
@@ -14,6 +14,11 @@ import moment from 'moment';
 const BlogContentSecionOne = ({ blogData }) => {
 
     const [value, setValue] = useState(null);
+    const isMobile = useMediaQuery("(min-width:600px)");
+
+    useEffect(() => {
+
+    }, [blogData]);
 
     const months = [
         "January", "February", "March", "April", "May", "June",
@@ -79,15 +84,15 @@ const BlogContentSecionOne = ({ blogData }) => {
                     return (
                         <Grid item xs={12} sm={8} md={8} p={3}>
                             <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
-                                <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
+                                <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'35px'} fontSize={'35px'} mb={5} mt={5}>
                                     {data?.post_title}
                                 </Typography>
                                 <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
                                     {moment(data?.post_date).format('MMMM Do YYYY')}
                                 </Typography>
                             </Box>
-                            <img alt='' src={imageUrl} />
-                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
+                            <img alt='' style={{ width: isMobile ? '60%' : '100%' }} src={imageUrl} />
+                            <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'35px'} fontSize={'25px'}>
                                 {parse(first10Words)}
                             </Typography>
                         </Grid>
@@ -132,7 +137,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                 }}
                             >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -143,7 +148,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         <EventAvailableIcon />
                                         {formattedDate}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',
@@ -168,7 +173,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                 }}
                             >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -179,7 +184,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         <EventAvailableIcon />
                                         {formattedDate1}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',
@@ -204,7 +209,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                 }}
                             >
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -215,7 +220,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                                         <EventAvailableIcon />
                                         {formattedDate3}
                                     </Grid>
-                                    <Grid item xs={12} sm={6} md={6}
+                                    <Grid item xs={6} sm={6} md={6}
                                         sx={{
                                             display: 'flex',
                                             justifyContent: 'flex-end',

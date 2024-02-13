@@ -50,7 +50,7 @@ const BlogContent = () => {
         };
 
         fetchData();
-    }, []);
+    }, [blogData]);
 
     return (
         <div>

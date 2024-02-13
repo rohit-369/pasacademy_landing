@@ -23,7 +23,7 @@ const ContentSectionTwo = () => {
                 flexGrow: 1,
                 // width: '100%',
                 paddingTop: '5px',
-                pt: '1px',
+                p: '5px',
             }}
         >
             <Grid container spacing={1} pt={5}>
