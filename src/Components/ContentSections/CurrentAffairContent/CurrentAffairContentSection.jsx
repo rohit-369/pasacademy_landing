@@ -65,12 +65,7 @@ const CurrentAffairContentSection = ({ data }) => {
             } else {
               return null;
             }
-          }
-          const first10Words = data?.post_content
-            .replace(/<[^>]*>/g, ' ') // Remove HTML tags
-            .split(/\s+/) // Split into words
-            .slice(0, 10) // Take the first 10 words
-            .join(' ');
+          };
           const imageUrl = extractImageUrlFromPostContent(data?.post_content);
 
           return (
@@ -83,9 +78,9 @@ const CurrentAffairContentSection = ({ data }) => {
                   {moment(data?.post_date).format('MMMM Do YYYY')}
                 </Typography>
               </Box>
-              <img alt='' style={{ width: isMobile ? '60%' : '100%' }} src={imageUrl} />
+              {/* <img alt='' style={{ width: isMobile ? '60%' : '100%' }} src={imageUrl} /> */}
               <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'35px'} fontSize={'25px'}>
-                {parse(first10Words)}
+                {parse(data?.post_content)}
               </Typography>
             </Grid>
           )
