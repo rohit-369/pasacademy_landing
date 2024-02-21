@@ -18,6 +18,9 @@ import { useLocation, useParams } from 'react-router-dom'
 import BlogContentSecionOne from '../Components/BlogContentSections/BlogContentSecionOne/BlogContentSecionOne'
 import BlogContentSectionTwo from '../Components/BlogContentSections/BlogContentSectionTwo/BlogContentSectionTwo'
 import whatsAppSvg from '../../images/whatsAppSvg.svg';
+import '../../src/newcss/css/dist/block-library/common.min.css'
+import '../../src/newcss/blocks/navigation/style.min.css'
+import '../../src/newcss/blocks/image/style.min.css'
 
 const BlogContent = () => {
 

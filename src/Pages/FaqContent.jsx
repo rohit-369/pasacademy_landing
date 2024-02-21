@@ -18,8 +18,9 @@ import { useLocation, useParams } from 'react-router-dom'
 import CurrentAffairContentSection from '../Components/ContentSections/CurrentAffairContent/CurrentAffairContentSection'
 import BlogContentSectionTwo from '../Components/BlogContentSections/BlogContentSectionTwo/BlogContentSectionTwo'
 import whatsAppSvg from '../../images/whatsAppSvg.svg';
+import FaqContentSectionOne from '../Components/FaqContentSection/FaqContentSectionOne'
 
-const CurrentAffairContent = () => {
+const FaqContent = () => {
 
     const { id } = useParams();
     const [index, setIndex] = useState(0);
@@ -63,7 +64,7 @@ const CurrentAffairContent = () => {
             {/* <CourseSection /> */}
             {/* <CurrentAffairSection />
     <CalenderSection /> */}
-            <CurrentAffairContentSection data={data} />
+            <FaqContentSectionOne data={data} />
             <BlogContentSectionTwo />
             <ContentBannerSection />
             <SecondBlogSection />
@@ -98,4 +99,4 @@ const CurrentAffairContent = () => {
     )
 }
 
-export default CurrentAffairContent
+export default FaqContent

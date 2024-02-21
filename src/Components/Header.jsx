@@ -7,10 +7,10 @@ const Header = () => {
             <Grid container spacing={2}
                 sx={{
                     background: '#FFD80D',
-                    padding: '6px',
+                    padding: '8px',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'baseline'
+                    alignItems: 'baseline',
                 }}
             >
                 <Grid item xs={12} sm={6} md={6} textAlign={['center', 'end']}>

@@ -187,6 +187,11 @@ const CurrentAffairSection = () => {
                                 .split(/\s+/) // Split into words
                                 .slice(0, 20) // Take the first 10 words
                                 .join(' ');
+                            const first10WordsTitle = data?.post_title
+                                .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                                .split(/\s+/) // Split into words
+                                .slice(0, 4) // Take the first 10 words
+                                .join(' ');
                             return (
                                 <>
                                     <Grid item xs={12} sm={4} md={4}>
@@ -208,7 +213,7 @@ const CurrentAffairSection = () => {
                                                 {moment(data?.post_date).format('MMMM Do YYYY')}
                                             </Typography>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                {data?.post_title}
+                                                {first10WordsTitle}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
                                                 {parse(first10Words)}
@@ -282,6 +287,11 @@ const CurrentAffairSection = () => {
                             .split(/\s+/) // Split into words
                             .slice(0, 20) // Take the first 10 words
                             .join(' ');
+                        const first10WordsTitle = data?.post_title
+                            .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                            .split(/\s+/) // Split into words
+                            .slice(0, 4) // Take the first 10 words
+                            .join(' ');
                         return (
                             <Grid item xs={12} sm={3} md={3} key={data.id}>
                                 <Card sx={{ maxWidth: 345 }}>
@@ -292,7 +302,7 @@ const CurrentAffairSection = () => {
                                     />
                                     <CardContent>
                                         <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                                            {data?.post_title}
+                                            {first10WordsTitle}
                                         </Typography>
                                         <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
                                             {parse(first10Words)}

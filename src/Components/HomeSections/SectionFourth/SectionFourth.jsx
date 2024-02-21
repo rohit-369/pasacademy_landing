@@ -5,9 +5,11 @@ import image1 from './Images/image1.svg';
 import CourseNetwrok from '../../../Network';
 import parse from 'html-react-parser'
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 const SectionFourth = () => {
 
+    const navigate = useNavigate();
     const [index, setIndex] = useState(0);
     const [showAll, setShowAll] = useState(false);
     const [faqs, setFaqs] = useState([]);
@@ -48,6 +50,12 @@ const SectionFourth = () => {
 
     const toggleViewAll = () => {
         setShowAll(!showAll);
+    };
+
+    const handleReadMoreFaq = (e, data) => {
+        // console.log('data', data);
+        navigate(`/faq/${data?.ID}`);
+        // console.log('id', data);
     };
 
     return (
@@ -171,6 +179,7 @@ const SectionFourth = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button
+                                            onClick={(e) => handleReadMoreFaq(e, data)}
                                             sx={{
                                                 background: '#F6E9FF',
                                                 padding: '16px 32px',
@@ -255,6 +264,7 @@ const SectionFourth = () => {
                                     </CardContent>
                                     <CardActions>
                                         <Button
+                                            onClick={(e) => handleReadMoreFaq(e, data)}
                                             sx={{
                                                 background: '#F6E9FF',
                                                 padding: '16px 32px',

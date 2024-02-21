@@ -184,16 +184,6 @@ const Navbar = () => {
                         <img alt='' src={logo} />
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <Menu
                             id="menu-appbar"
                             anchorEl={anchorElNav}
@@ -230,6 +220,9 @@ const Navbar = () => {
                                         .map((filteredCourse, index) => {
                                             return (
                                                 <MenuItem
+                                                    sx={{
+                                                        margin: '5px'
+                                                    }}
                                                     // onClick={handleCloseM}
                                                     onClick={() => handleBuyCourse(filteredCourse)}
                                                 >
@@ -252,14 +245,26 @@ const Navbar = () => {
                                     open={showFreeResourcesSubMenu}
                                     onClose={() => setShowFreeResourcesSubMenu(false)}
                                 >
-                                    <MenuItem onClick={handleCloseF}>Current Affair</MenuItem>
-                                    <MenuItem onClick={handleCloseF}>Blogs</MenuItem>
+                                    <MenuItem
+                                        sx={{
+                                            margin: '5px'
+                                        }}
+                                        onClick={handleCloseF}>Current Affair</MenuItem>
+                                    <MenuItem
+                                        sx={{
+                                            margin: '5px'
+                                        }}
+                                        onClick={handleCloseF}>Blogs</MenuItem>
                                 </Menu>
                             </MenuItem>
                             {pages
                                 .filter((page) => page !== 'Courses') // Exclude Courses page from the list
                                 .map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    <MenuItem
+                                        sx={{
+                                            margin: '5px'
+                                        }}
+                                        key={page} onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 ))}
@@ -269,7 +274,7 @@ const Navbar = () => {
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
-                            justifyContent: { xs: 'center', md: 'none' },
+                            justifyContent: { xs: 'space-between', md: 'none' },
                             width: '100%'
                             // flexGrow: 1,
                             // fontFamily: 'monospace',
@@ -280,6 +285,16 @@ const Navbar = () => {
                         }}
                     >
                         <img alt='' src={logo} />
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '5rem' }}>
                         <IconButton
@@ -344,6 +359,9 @@ const Navbar = () => {
                                 .map((filteredCourse, index) => {
                                     return (
                                         <MenuItem
+                                            sx={{
+                                                margin: '5px'
+                                            }}
                                             // onClick={handleCloseM}
                                             onClick={() => handleBuyCourse(filteredCourse)}
                                         >
@@ -415,10 +433,18 @@ const Navbar = () => {
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
-                            <MenuItem onClick={handleCloseF}>
+                            <MenuItem
+                                sx={{
+                                    margin: '5px'
+                                }}
+                                onClick={handleCloseF}>
                                 Current Affair
                             </MenuItem>
-                            <MenuItem onClick={handleCloseF}>
+                            <MenuItem
+                                sx={{
+                                    margin: '5px'
+                                }}
+                                onClick={handleCloseF}>
                                 Blogs
                             </MenuItem>
                         </Menu>

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Content from './Pages/Content';
 import BlogContent from './Pages/BlogContent';
 import CurrentAffairContent from './Pages/CurrentAffairContent';
+import FaqContent from './Pages/FaqContent';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path='/content' element={<Content />} />
           <Route path='/blogContent/:id' element={<BlogContent />} />
           <Route path='/currentAffair/:id' element={<CurrentAffairContent />} />
+          <Route path='/faq/:id' element={<FaqContent />} />
         </Routes>
       </BrowserRouter>
     </>

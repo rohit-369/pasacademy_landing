@@ -34,7 +34,7 @@ const BannerSection = () => {
                     overflow: 'hidden',
                     '&:hover': { overflowX: 'auto' },
                     scrollbarWidth: 'thin',
-                    scrollbarColor: 'transparent transparent',
+                    scrollbarColor: '#402f2f69 transparent',
                     WebkitOverflowScrolling: 'touch',
                     '&::-webkit-scrollbar': {
                         height: '6px'
@@ -45,7 +45,7 @@ const BannerSection = () => {
                         width: '1px',
                     },
                     '&::-webkit-scrollbar-thumb:hover': {
-                        background: '#555',
+                        background: '#402f2f69',
                     },
                 }}
             >

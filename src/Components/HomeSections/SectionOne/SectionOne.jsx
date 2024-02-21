@@ -7,21 +7,23 @@ import Paper from '@mui/material/Paper';
 import checkBoxsvg from './Images/checkBoxsvg.svg'
 import Typewriter from '../../Typewritter';
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    fontFamily: 'Inter , sans-serif',
-    fontWeight: '700',
-    fontSize: '18px'
-}));
+
 
 const SectionOne = () => {
 
     const theme = useTheme();
-    const mobile = useMediaQuery(theme.breakpoints.down("md"));
+    const mobile = useMediaQuery("(min-width:600px)");
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: '#000',
+        fontFamily: 'Inter , sans-serif',
+        fontWeight: '700',
+        fontSize: mobile ? '18px' : '14px'
+    }));
 
     return (
         <Box
@@ -37,8 +39,8 @@ const SectionOne = () => {
                 // backgroundRepeat: 'no-repeat',
             }}>
             <Grid container spacing={2}>
-                <hr color='#fff' style={{ height: '14px', position: 'relative', top: mobile ? '908px' : '575px', width: '100%' }} />
-                <Grid item xs={12} sm={6} md={6} mt={4}>
+                <hr color='#fff' style={{ height: '14px', position: 'relative', top: mobile ? '575px' : '830px', width: '100%' }} />
+                <Grid item xs={12} sm={6} md={6} mt={4} padding={mobile ? '0px' : '30px'}>
                     <Grid container spacing={2}
                         sx={{
                             display: 'flex',
@@ -46,7 +48,7 @@ const SectionOne = () => {
                             alignItems: 'center'
                         }}
                     >
-                        <Grid item xs={12} sm={6} md={6}>
+                        <Grid item xs={12} sm={6} md={6} ml={[2, 0]}>
                             <Typography>
                                 <Item>🏆 Pioneer in UPSC-MPPSC Preparation</Item>
                             </Typography>
@@ -56,7 +58,7 @@ const SectionOne = () => {
                                         fontFamily: 'Inter , sans-serif',
                                         fontWeight: '700',
                                         color: '#fff',
-                                        fontSize: '44px',
+                                        fontSize: mobile ? '44px' : '30px',
                                     }}
                                 >
                                     Best <Typewriter text="UPSC Coaching" delay={100} />
@@ -66,7 +68,7 @@ const SectionOne = () => {
                                         fontFamily: 'Inter , sans-serif',
                                         fontWeight: '700',
                                         color: '#fff',
-                                        fontSize: '44px'
+                                        fontSize: mobile ? '44px' : '30px',
                                     }}
                                 >
                                     Near You.

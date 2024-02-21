@@ -1,24 +1,22 @@
 import { Box, Card, CardContent, Grid, Typography, useMediaQuery } from '@mui/material';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react'
-import dayjs from 'dayjs';
 import newsLogo from './Images/news.svg'
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import parse from 'html-react-parser'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import parse from 'html-react-parser'
-import moment from 'moment';
+import '../../newcss/css/dist/block-library/common.min.css'
+import '../../newcss/blocks/navigation/style.min.css'
+import '../../newcss/blocks/image/style.min.css'
 
-const BlogContentSecionOne = ({ blogData }) => {
+const FaqContentSectionOne = ({ data }) => {
 
     const [value, setValue] = useState(null);
     const isMobile = useMediaQuery("(min-width:600px)");
-
-    useEffect(() => {
-
-    }, [blogData]);
 
     const months = [
         "January", "February", "March", "April", "May", "June",
@@ -58,12 +56,8 @@ const BlogContentSecionOne = ({ blogData }) => {
     return (
         <Box m='20px'>
             <Grid container spacing={2}>
-                {/* {Array.isArray(blogData) && blogData.map((data, index) => (
-                    <Typography key={index}>
-                        {data?.post_date}
-                    </Typography>
-                ))} */}
-                {Array.isArray(blogData) && blogData.map((data, index) => {
+                {Array.isArray(data) && data.map((data, index) => {
+
                     const parsedContent = parse(data?.post_content);
 
                     const styles = {
@@ -74,6 +68,7 @@ const BlogContentSecionOne = ({ blogData }) => {
                         width: 'auto',
                         height: 'auto'
                     };
+
                     return (
                         <Grid item xs={12} sm={8} md={8} p={3}>
                             <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
@@ -253,4 +248,57 @@ const BlogContentSecionOne = ({ blogData }) => {
     )
 }
 
-export default BlogContentSecionOne
+export default FaqContentSectionOne
+
+// import { Box, Grid, Typography } from '@mui/material';
+// import moment from 'moment';
+// import React, { useEffect, useState } from 'react'
+// import { useLocation } from 'react-router-dom';
+// import parse from 'html-react-parser'
+
+// const CurrentAffairContentSection = ({ data }) => {
+
+//   const extractImageUrlFromPostContent = (post_content) => {
+//     const parser = new DOMParser();
+//     const doc = parser.parseFromString(post_content, 'text/html');
+//     const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+
+//     if (imageElement) {
+//       return imageElement.getAttribute('src');
+//     } else {
+//       return null;
+//     }
+//   }
+//   const first10Words = data?.post_content
+//     .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+//     .split(/\s+/) // Split into words
+//     .slice(0, 10) // Take the first 10 words
+//     .join(' ');
+//   const imageUrl = extractImageUrlFromPostContent(data?.post_content);
+
+//   return (
+//     <Box m='20px'>
+//       {Array.isArray(data) && data.map((data, index) => {
+//         return (
+//           <Grid item xs={12} sm={8} md={8} p={3}>
+//             <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
+//               <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'35px'} mb={5} mt={5}>
+//                 {data?.post_title}
+//               </Typography>
+//               <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
+//                 {moment(data?.post_date).format('MMMM Do YYYY')}
+//               </Typography>
+//             </Box>
+//             <img alt='' src={imageUrl} />
+//             <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'25px'}>
+//               {parse(first10Words)}
+//             </Typography>
+//           </Grid>
+//         )
+//       }
+//       )}
+//     </Box>
+//   )
+// }
+
+// export default CurrentAffairContentSection

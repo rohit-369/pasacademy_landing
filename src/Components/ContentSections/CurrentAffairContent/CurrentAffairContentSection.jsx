@@ -9,6 +9,9 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import parse from 'html-react-parser'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import '../../../newcss/css/dist/block-library/common.min.css'
+import '../../../newcss/blocks/navigation/style.min.css'
+import '../../../newcss/blocks/image/style.min.css'
 
 const CurrentAffairContentSection = ({ data }) => {
 
@@ -55,23 +58,21 @@ const CurrentAffairContentSection = ({ data }) => {
       <Grid container spacing={2}>
         {Array.isArray(data) && data.map((data, index) => {
 
-          const extractImageUrlFromPostContent = (post_content) => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(post_content, 'text/html');
-            const imageElement = doc.querySelector('img'); // Assuming the image is the first one found
+          const parsedContent = parse(data?.post_content);
 
-            if (imageElement) {
-              return imageElement.getAttribute('src');
-            } else {
-              return null;
-            }
+          const styles = {
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            fontSize: '16px',
+            lineHeight: '1.6',
+            color: '#333',
+            width: 'auto',
+            height: 'auto'
           };
-          const imageUrl = extractImageUrlFromPostContent(data?.post_content);
 
           return (
             <Grid item xs={12} sm={8} md={8} p={3}>
-              <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
-                <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'35px'} fontSize={'35px'} mb={5} mt={5}>
+              <Box display={['block', 'flex']} justifyContent={'space-between'} alignItems={'baseline'}>
+                <Typography width={'75%'} textAlign={'left'} fontWeight={'bold'} lineHeight={'44px'} fontSize={'35px'} mb={5} mt={5}>
                   {data?.post_title}
                 </Typography>
                 <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
@@ -79,8 +80,11 @@ const CurrentAffairContentSection = ({ data }) => {
                 </Typography>
               </Box>
               {/* <img alt='' style={{ width: isMobile ? '60%' : '100%' }} src={imageUrl} /> */}
-              <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'35px'} fontSize={'25px'}>
-                {parse(data?.post_content)}
+              <Typography
+                style={styles}
+              // textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'35px'} fontSize={'25px'}
+              >
+                {parsedContent}
               </Typography>
             </Grid>
           )
@@ -90,7 +94,7 @@ const CurrentAffairContentSection = ({ data }) => {
           display={'flex'}
           justifyContent={'center'}
         >
-          <Card sx={{ maxWidth: 360, height: ['670', 'auto'] }}>
+          <Card sx={{ maxWidth: 360, height: ['670', '30%'] }}>
             <CardContent>
               <Box
                 sx={{

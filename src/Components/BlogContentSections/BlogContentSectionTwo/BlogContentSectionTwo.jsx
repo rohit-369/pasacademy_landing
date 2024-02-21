@@ -207,6 +207,12 @@ const BlogContentSectionTwo = () => {
                     .split(/\s+/) // Split into words
                     .slice(0, 10) // Take the first 10 words
                     .join(' ');
+
+                  const first10WordsTitle = data?.post_title
+                    .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                    .split(/\s+/) // Split into words
+                    .slice(0, 5) // Take the first 10 words
+                    .join(' ');
                   const imageUrl = extractImageUrlFromPostContent(data?.post_content);
                   return (
                     <Grid item xs={12} sm={12} md={12} key={data.id}>
@@ -218,7 +224,7 @@ const BlogContentSectionTwo = () => {
                         />
                         <CardContent>
                           <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                            {data?.post_title}
+                            {first10WordsTitle}
                           </Typography>
                           <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
                             {parse(first10Words)}
