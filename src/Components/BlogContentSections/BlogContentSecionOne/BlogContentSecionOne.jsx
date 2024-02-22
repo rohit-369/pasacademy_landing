@@ -76,11 +76,11 @@ const BlogContentSecionOne = ({ blogData }) => {
                     };
                     return (
                         <Grid item xs={12} sm={8} md={8} p={3}>
-                            <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'}>
+                            <Box display={['block', 'flex']} justifyContent={'space-between'} alignItems={'baseline'}>
                                 <Typography width={'75%'} textAlign={'left'} fontWeight={'bold'} lineHeight={'44px'} fontSize={'35px'} mb={5} mt={5}>
                                     {data?.post_title}
                                 </Typography>
-                                <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'}>
+                                <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'20px'} mb={2}>
                                     {moment(data?.post_date).format('MMMM Do YYYY')}
                                 </Typography>
                             </Box>

@@ -3,19 +3,22 @@ import logo from '../../images/appLogosvg.svg'
 import capLogo from '../../images/capsvg.svg'
 import downArrow from '../../images/downArrowsvg.svg'
 import upArrow from '../../images/upArrowsvg.svg'
-import { Menu, MenuItem, Box, Button, Popper, Grow, Paper, MenuList, ClickAwayListener, Grid, IconButton } from '@mui/material';
+import { Menu, MenuItem, Box, Button, Popper, Grow, Paper, MenuList, ClickAwayListener, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Drawer, Collapse } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import AdbIcon from '@mui/icons-material/Adb';
+import CloseIcon from '@mui/icons-material/Close';
 import CourseNetwrok from '../Network';
 import { useNavigate } from 'react-router-dom';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import appleStore from '../../images/applestoresvg.svg'
+import playStore from '../../images/playstoresvg.svg'
+import windowsStore from '../../images/windowsstoresvg.svg'
 
-const pages = ['Courses', 'Interview Guidance', 'Answer Writing Program', `Topper's Strategy`];
+const pages = ['Interview Guidance', 'Answer Writing Program', 'Free-Resources', `Topper's Strategy`];
 const Navbar = () => {
 
     const instId = '94'
@@ -156,6 +159,163 @@ const Navbar = () => {
         setShowFreeResourcesSubMenu(!showFreeResourcesSubMenu);
     };
 
+    const [openLeft, setOpenLeft] = React.useState(false);
+    const [openCourse, setOpenCourse] = React.useState(false);
+    const [openFreeResources, setOpenFreeResources] = React.useState(false);
+
+    const toggleDrawer = (newOpen) => () => {
+        setOpenLeft(newOpen);
+    };
+
+    const handleClick2 = (event) => {
+        setOpenCourse((prevOpen) => !prevOpen);
+        event.stopPropagation();
+    };
+
+    const handleOpenNavMenu2 = () => {
+        setOpenLeft(true);
+    };
+    const handleOpenNavMen2Close = () => {
+        setOpenLeft(false);
+    };
+
+    const handleClickFreeResources = (event) => {
+        setOpenFreeResources((prevOpen) => !prevOpen);
+        event.stopPropagation();
+    };
+
+    const handlePlayStore = () => {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.classiolabs.psacademy&pcampaignid=web_share'
+    }
+
+    const DrawerList = (
+        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+            <List>
+                <ListItem sx={{ display: 'flex', justifyContent: 'end' }}>
+                    <CloseIcon onClick={handleOpenNavMen2Close} />
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                        }}
+                        onClick={handleClick2}>
+                        <Typography variant="body1" style={{ fontSize: '1.2rem' }}>
+                            Courses
+                        </Typography>
+                        {openCourse ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                </ListItem>
+                <Collapse in={openCourse} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton
+                            sx={{
+                                boxShadow: '0px 2px 8px 0px #b3a3a3'
+                            }}
+                            onClick={handleClick2}>
+                            {courses && courses
+                                .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
+                                .map((filteredCourse, index) => {
+                                    return (
+                                        <ListItemText
+                                            // onClick={handleCloseM}
+                                            onClick={() => handleBuyCourse(filteredCourse)}
+                                        >
+                                            {filteredCourse.title}
+                                        </ListItemText>
+                                    )
+                                })}
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+                <ListItem disablePadding>
+                    <ListItemButton
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                        }}
+                        onClick={handleClickFreeResources}>
+                        <Typography variant="body1" style={{ fontSize: '1.2rem' }}>
+                            Free-Rescources
+                        </Typography>
+                        {openFreeResources ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+                </ListItem>
+                <Collapse in={openFreeResources} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4, boxShadow: '0px 2px 8px 0px #b3a3a3' }} onClick={handleClickFreeResources}>
+                            <ListItemText
+                                primary={'Current Affair'}
+                                onClick={handleCloseF}
+                            />
+                        </ListItemButton>
+                        <ListItemButton sx={{ pl: 4, boxShadow: '0px 2px 8px 0px #b3a3a3' }} onClick={handleClickFreeResources}>
+                            <ListItemText
+                                primary={'Blogs'}
+                                onClick={handleCloseF}
+                            />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+                {/* Other items */}
+                {pages.map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <Typography variant="body1" style={{ fontSize: '1.2rem' }} >
+                                {text}
+                            </Typography>
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+                <ListItem>
+                    <Button
+                        sx={{
+                            background: '#FFD80D',
+                            borderRadius: '40px',
+                            textTransform: 'none',
+                            fontWeight: '600',
+                            fontSize: '15px',
+                            color: 'black',
+                            width: '100%',
+                            '&:hover': {
+                                background: '#FFD80D',
+                            },
+                        }}
+                    >
+                        <img alt='' src={capLogo} />
+                        Free Scholarship Test
+                    </Button>
+                </ListItem>
+                <ListItem
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }}
+                >
+                    <img onClick={handlePlayStore} width={'100%'} alt='' src={playStore} />
+                </ListItem>
+                <ListItem
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        mt: '-10px'
+                    }}
+                >
+                    <img width={'88%'} alt='' src={appleStore} />
+                </ListItem>
+                <ListItem
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }}
+                >
+                    <img width={'90%'} alt='' src={windowsStore} />
+                </ListItem>
+            </List>
+        </Box>
+    );
+
     return (
         <AppBar position="static"
             sx={{
@@ -284,17 +444,21 @@ const Navbar = () => {
                             // textDecoration: 'none',
                         }}
                     >
-                        <img alt='' src={logo} />
+                        <img alt='' onClick={handlNavigateHome} src={logo} />
                         <IconButton
                             size="large"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
+                            onClick={handleOpenNavMenu2} // Call handleOpenNavMenu on click
                             color="inherit"
                         >
                             <MenuIcon />
                         </IconButton>
+                        {/* Drawer component */}
+                        <Drawer anchor="right" open={openLeft} onClose={toggleDrawer(false)}>
+                            {DrawerList}
+                        </Drawer>
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '5rem' }}>
                         <IconButton

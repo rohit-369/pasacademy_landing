@@ -72,30 +72,32 @@ const BlogContentSectionTwo = () => {
               <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={6} sm={1.5} md={1.5}>
-                    <img alt='' width={'72%'} src={USC} />
+                    <img alt='' style={{ width: isMobileView ? '72%' : '60%', marginLeft: isMobileView ? '0px' : '50px' }} src={USC} />
                   </Grid>
                   <Grid item xs={6} sm={1.5} md={1.5}>
-                    <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
+                    <img alt='' style={{ marginTop: isMobileView ? '70px' : '2px', width: isMobileView ? '80%' : '65%' }} src={Ellipse1080} />
                   </Grid>
-                  <Grid item xs={12} sm={6} mt={2}>
+                  <Grid item xs={12} sm={6} mt={['0px', 2]}>
                     <Box position={'relative'} top={'20px'}>
                       <Typography
                         fontFamily={'Inter'}
-                        fontSize={'31px'}
+                        fontSize={['19px', '31px']}
                         fontWeight={'600'}
                         color={'#fff'}
                         width={'100%'}
+                        textAlign={['center', 'start']}
                       >
                         Online UPSC - MPPSC Coaching
                       </Typography>
                       <Typography
                         fontFamily={'Inter'}
-                        fontSize={'18px'}
+                        fontSize={['14px', '18px']}
                         fontWeight={'500'}
                         color={'#FFFF00'}
                         width={'100%'}
+                        textAlign={['center', 'start']}
                       >
-                        Best Coaching for online / classroom UPSC CSE and MPPSC
+                        Indore Best Coaching for online / classroom UPSC CSE and MPPSC
                       </Typography>
                     </Box>
                   </Grid>
@@ -129,20 +131,20 @@ const BlogContentSectionTwo = () => {
           </Card>
           <Box
             sx={{
-              pt: 2,
+              pt: 4,
               pb: 2
             }}
           >
             <BlogSection cardData={data} />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={4} md={4}>
+        <Grid item xs={12} sm={4} md={4} pb={2}>
           <Grid container spacing={2}>
             <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'}>
               <Typography
                 color={'#212529'}
                 fontFamily={'Inter'}
-                fontSize={'31px'}
+                fontSize={['25px','31px']}
                 fontStyle={'normal'}
                 fontWeight={'700'}
                 lineHeight={'38px'}
@@ -151,7 +153,7 @@ const BlogContentSectionTwo = () => {
                 Current Affair
               </Typography>
             </Grid>
-            <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'flex-end'}>
+            <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'flex-end'} alignItems={'center'}>
               <button
                 style={{
                   display: 'flex',

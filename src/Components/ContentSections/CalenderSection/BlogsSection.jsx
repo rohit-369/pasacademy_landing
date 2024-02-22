@@ -41,7 +41,7 @@ const BlogSection = ({ cardData }) => {
                     <Typography
                         color={'#212529'}
                         fontFamily={'Inter'}
-                        fontSize={'31px'}
+                        fontSize={['25px','31px']}
                         fontStyle={'normal'}
                         fontWeight={'700'}
                         lineHeight={'38px'}
@@ -88,7 +88,7 @@ const BlogSection = ({ cardData }) => {
                     </button>
                 </Grid>
             </Grid>
-            <Grid container spacing={2} p={2}>
+            <Grid container spacing={2} p={2} sx={{ marginLeft: ['-5px', '0px'] }} >
                 {cardData.length === 0 ?
                     <Typography fontFamily={'Inter'} fontSize={'20px'} >
                         No Blogs Available
@@ -197,7 +197,7 @@ const BlogSection = ({ cardData }) => {
                                         />
                                         <CardContent>
                                             <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
-                                            {parse(first10WordsTitle)}
+                                                {parse(first10WordsTitle)}
                                             </Typography>
                                             <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
                                                 {parse(first10Words)}

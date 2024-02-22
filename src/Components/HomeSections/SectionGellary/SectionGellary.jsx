@@ -30,7 +30,7 @@ const SectionGellary = () => {
     }, []);
 
     return (
-        <Box p={2}>
+        <Box m={'20px'}>
             <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'}>
                     <Typography
@@ -43,27 +43,9 @@ const SectionGellary = () => {
                     >
                         Gallery
                     </Typography>
-                </Grid>
-                <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'end'}>
-                    {/* <Button
-                        onClick={handleViewAllClick}
-                        sx={{
-                            background: '#9D0009',
-                            color: 'white',
-                            fontFamily: 'Inter',
-                            fontSize: '15px',
-                            fontWeight: '400',
-                            lineHeight: '24px',
-                            borderRadius: '8px',
-                            textTransform: 'none',
-                            p: '5px 25px 5px 25px',
-                        }}
-                    >
-                        {showAll ? 'View Less' : 'View All'}
-                    </Button> */}
-                </Grid>
+                </Grid> 
             </Grid>
-            <Grid container spacing={2} padding={'1rem'}>
+            <Grid container spacing={2} padding={'1rem'} ml={'-5px'}>
                 <ImageList
                     sx={{ width: '100%', height: 450 }}
                     variant="quilted"

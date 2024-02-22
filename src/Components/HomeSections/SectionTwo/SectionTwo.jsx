@@ -33,11 +33,12 @@ const SectionTwo = () => {
         background: '#D93535',
         width: '100%',
         height: '100%',
-        paddingTop: '25px',
-        // pt: '60px',
+        paddingTop: '15px',
       }}>
       <Grid container spacing={2}
-        p={[4, 8]}
+        sx={{
+          padding: ['10px 18px 30px 32px', '15px 10px 35px 15px']
+        }}
       >
         <Grid item xs={12} sm={6} md={6} mt={3}>
           <Grid container spacing={2}>
@@ -202,8 +203,12 @@ const SectionTwo = () => {
             {/* </Grid> */}
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <Card sx={{ maxWidth: [700, 500] }}>
+        <Grid xs={12} sm={6} md={6} paddingLeft={"0px"} mt={['30px']}>
+          <Card
+            sx={{
+              maxWidth: [700, 500]
+            }}
+          >
             <CardContent sx={{ p: [2, 5] }}>
               <Typography
                 sx={{

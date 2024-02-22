@@ -56,13 +56,13 @@ const SecondBlogSection = () => {
     };
 
     return (
-        <Box m='20px'>
+        <Box m='20px' mt={5} mb={5}>
             <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'}>
                     <Typography
                         color={'#212529'}
                         fontFamily={'Inter'}
-                        fontSize={'31px'}
+                        fontSize={['25px','31px']}
                         fontStyle={'normal'}
                         fontWeight={'700'}
                         lineHeight={'38px'}

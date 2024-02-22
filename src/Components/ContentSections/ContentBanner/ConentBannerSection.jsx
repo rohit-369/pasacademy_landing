@@ -64,13 +64,14 @@ const ContentBannerSection = () => {
                     {banners && banners.map((banner, index) => {
                         return (
                             <>
-                                <CardMedia
+                                {/* <CardMedia
                                     component="img"
                                     height="230px"
                                     width={'auto'}
                                     // image={Endpoints.mediaBaseUrl + banner?.banner ? bannerImage1 : ""}
                                     image={Endpoints.mediaBaseUrl + banner?.banner}
-                                />
+                                /> */}
+                                <img alt='' width={'100%'} height={'170px'} src={Endpoints.mediaBaseUrl + banner?.banner} />
                             </>
                         )
                     })}

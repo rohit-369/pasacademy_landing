@@ -1,4 +1,4 @@
-import { Box, Card, CardActions, CardContent, CardMedia, Grid, Paper, Typography } from '@mui/material'
+import { Box, Card, CardActions, CardContent, CardMedia, Grid, Paper, Typography, useMediaQuery } from '@mui/material'
 import React, { useState } from 'react';
 import phoneSvg2 from './Images/phoneView2.jpeg'
 import phoneSvg from './Images/phoneView.jpeg'
@@ -10,6 +10,8 @@ import appleStoreButton from './Images/appleStoreButton.svg'
 import windowsStoreButton from './Images/windowsStoreButton.svg'
 
 const ContentSectionOne = () => {
+
+    const isMobile = useMediaQuery("(min-width:600px)");
 
     return (
         <Box sx={{ flexGrow: 1, p: 4 }}>
@@ -31,7 +33,8 @@ const ContentSectionOne = () => {
                         fontFamily={'Inter'}
                         color={'#14142B'}
                         lineHeight={'35px'}
-                        width={'65%'}
+                        width={isMobile ? '65%' : '100%'}
+                        textAlign={isMobile ? 'start' : 'center'}
                     >
                         <span style={{ color: '#F00' }} >PS Academy</span> is now available on all the platforms
                     </Typography>
@@ -41,16 +44,17 @@ const ContentSectionOne = () => {
                         fontFamily={'Inter'}
                         color={'#4E4B66'}
                         lineHeight={'24px'}
-                        width={'55%'}
+                        width={isMobile ? '55%' : '100%'}
+                        textAlign={isMobile ? 'start' : 'center'}
                         mt={2}
                     >
                         Download lessons and learn anytime, anywhere just made for your ease of learning
                     </Typography>
-                    <Grid container spacing={2} mt={3} width={['100%', '60%']} >
+                    <Grid display={['none', 'flex']} container spacing={2} mt={3} width={['100%', '60%']} >
                         <Grid item xs={12} sm={4} md={4}>
                             <Paper sx={{ p: 2 }}
                             >
-                                <img alt='' width={'50%'} style={{ position: 'relative', left: '35px' }} src={androidPhone} />
+                                <img alt='' width={'50%'} style={{ position: 'relative', left: isMobile ? '35px' : '60px' }} src={androidPhone} />
                                 <Typography
                                     color={'#14142B'}
                                     fontFamily={'Inter'}
@@ -124,15 +128,15 @@ const ContentSectionOne = () => {
                         </Grid>
                     </Grid>
                     <Grid container spacing={2} mt={3} width={['100%', '60%']}>
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid item xs={6} sm={4} md={4}>
                             <img alt='' width={'100%'} src={playStoreButton} />
                         </Grid>
-                        <Grid item xs={12} sm={4} md={4}>
+                        <Grid item xs={6} sm={4} md={4}>
                             <img alt='' width={'100%'} src={appleStoreButton} />
                         </Grid>
-                        <Grid item xs={12} sm={4} md={4}>
+                        {/* <Grid item xs={12} sm={4} md={4}>
                             <img alt='' width={'100%'} src={windowsStoreButton} />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </Grid>
             </Grid>

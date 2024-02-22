@@ -63,8 +63,9 @@ const SecondHeader = () => {
             onClick={handleClick}
           > */}
           <img alt=''
+            onClick={handleClick}
             style={{
-              width: isMobile ? '5%' : '10%'
+              width: isMobile ? '2.5%' : '10%'
             }}
             // width={['5%', '15%']} 
             src={emailLogo} />
@@ -90,8 +91,9 @@ const SecondHeader = () => {
           > */}
           <img
             alt=''
+            onClick={handleClickPhone}
             style={{
-              width: isMobile ? '5%' : '10%'
+              width: isMobile ? '2.5%' : '10%'
             }}
             src={contactLogo}
           />

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import USC from './Images/USC.svg'
 import Ellipse1080 from './Images/Ellipse1080.svg'
@@ -15,6 +15,7 @@ import axios from 'axios';
 
 const CalenderSection = () => {
 
+    const isMobile = useMediaQuery("(min-width:600px)");
     const [data, setData] = useState([]);
     const [value, setValue] = React.useState(null);
 
@@ -114,30 +115,32 @@ const CalenderSection = () => {
                             <Box sx={{ flexGrow: 1 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} sm={1.5} md={1.5}>
-                                        <img alt='' width={'72%'} src={USC} />
+                                        <img alt='' style={{ width: isMobile ? '72%' : '60%', marginLeft: isMobile ? '0px' : '50px' }} src={USC} />
                                     </Grid>
                                     <Grid item xs={6} sm={1.5} md={1.5}>
-                                        <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
+                                        <img alt='' style={{ marginTop: isMobile ? '70px' : '2px', width: isMobile ? '80%' : '65%' }} src={Ellipse1080} />
                                     </Grid>
-                                    <Grid item xs={12} sm={6} mt={2}>
+                                    <Grid item xs={12} sm={6} mt={['0px', 2]}>
                                         <Box position={'relative'} top={'20px'}>
                                             <Typography
                                                 fontFamily={'Inter'}
-                                                fontSize={'31px'}
+                                                fontSize={['19px', '31px']}
                                                 fontWeight={'600'}
                                                 color={'#fff'}
                                                 width={'100%'}
+                                                textAlign={['center', 'start']}
                                             >
                                                 Online UPSC - MPPSC Coaching
                                             </Typography>
                                             <Typography
                                                 fontFamily={'Inter'}
-                                                fontSize={'18px'}
+                                                fontSize={['14px', '18px']}
                                                 fontWeight={'500'}
                                                 color={'#FFFF00'}
                                                 width={'100%'}
+                                                textAlign={['center', 'start']}
                                             >
-                                                Best Coaching for online / classroom UPSC CSE and MPPSC
+                                                Indore Best Coaching for online / classroom UPSC CSE and MPPSC
                                             </Typography>
                                         </Box>
                                     </Grid>
@@ -192,28 +195,30 @@ const CalenderSection = () => {
                             <Box sx={{ flexGrow: 1 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} sm={1.5} md={1.5}>
-                                        <img alt='' width={'72%'} src={USC} />
+                                        <img alt='' style={{ width: isMobile ? '72%' : '60%', marginLeft: isMobile ? '0px' : '50px' }} src={USC} />
                                     </Grid>
                                     <Grid item xs={6} sm={1.5} md={1.5}>
-                                        <img alt='' width={'80%'} style={{ marginTop: '70px' }} src={Ellipse1080} />
+                                        <img alt='' style={{ marginTop: isMobile ? '70px' : '2px', width: isMobile ? '80%' : '65%' }} src={Ellipse1080} />
                                     </Grid>
-                                    <Grid item xs={12} sm={6} mt={2}>
+                                    <Grid item xs={12} sm={6} mt={['0px', 2]}>
                                         <Box position={'relative'} top={'20px'}>
                                             <Typography
                                                 fontFamily={'Inter'}
-                                                fontSize={'31px'}
+                                                fontSize={['19px', '31px']}
                                                 fontWeight={'600'}
                                                 color={'#fff'}
                                                 width={'100%'}
+                                                textAlign={['center', 'start']}
                                             >
                                                 Online UPSC - MPPSC Coaching
                                             </Typography>
                                             <Typography
                                                 fontFamily={'Inter'}
-                                                fontSize={'18px'}
+                                                fontSize={['14px', '18px']}
                                                 fontWeight={'500'}
                                                 color={'#FFFF00'}
                                                 width={'100%'}
+                                                textAlign={['center', 'start']}
                                             >
                                                 Indore Best Coaching for online / classroom UPSC CSE and MPPSC
                                             </Typography>
@@ -248,7 +253,7 @@ const CalenderSection = () => {
                         </Box>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={4} md={4}>
+                <Grid display={['none', 'grid']} item xs={12} sm={4} md={4}>
                     <Card sx={{ maxWidth: 360, height: ['670', 'auto'] }}>
                         <CardContent>
                             <Box
