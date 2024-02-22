@@ -20,7 +20,6 @@ const ContentSectionTwo = () => {
                 backgroundSize: 'cover', // or 'contain' depending on your needs
                 backgroundRepeat: 'no-repeat',
                 height: '100%',
-                flexGrow: 1,
                 // width: '100%',
                 paddingTop: '5px',
                 p: '5px',

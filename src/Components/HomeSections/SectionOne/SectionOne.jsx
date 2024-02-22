@@ -39,7 +39,7 @@ const SectionOne = () => {
                 // backgroundRepeat: 'no-repeat',
             }}>
             <Grid container spacing={2}>
-                <hr color='#fff' style={{ height: '14px', position: 'relative', top: mobile ? '575px' : '830px', width: '100%' }} />
+                <hr color='#fff' style={{ height: '14px', position: 'relative', top: mobile ? '575px' : '980px', width: '100%' }} />
                 <Grid item xs={12} sm={6} md={6} mt={4} padding={mobile ? '0px' : '30px'}>
                     <Grid container spacing={2}
                         sx={{
@@ -173,7 +173,7 @@ const SectionOne = () => {
                     sm={6}
                     md={6}
                 >
-                    <img width={['60%']} alt='' style={{ position: 'relative', top: '4px' }} src={director} />
+                    <img alt='' style={{ position: 'relative', top: '4px', width: mobile ? '60%' : '100%' }} src={director} />
                 </Grid>
 
             </Grid>

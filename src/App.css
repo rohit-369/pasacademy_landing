@@ -20,3 +20,8 @@
 #speed:focus {
     outline: none;
 }
+
+.input-field:focus {
+    box-shadow: 0 0 5px 3px rgb(248, 170, 1);
+    /* x-offset, y-offset, blur-radius, spread-radius, color */
+}

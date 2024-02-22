@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import CourseNetwrok from '../../../Network';
 import Endpoints from '../../../constant/endpoints';
@@ -8,6 +8,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 const SectionGellary = () => {
 
     const instId = '94';
+    const isMobile = useMediaQuery("(min-width:600px)");
     const [galleryList, setGalleryList] = useState([]);
     const getInstituteList = async () => {
         const response = await CourseNetwrok.fetchInstitute(instId);
@@ -29,7 +30,7 @@ const SectionGellary = () => {
     }, []);
 
     return (
-        <Box p={4}>
+        <Box p={2}>
             <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'}>
                     <Typography
@@ -62,11 +63,11 @@ const SectionGellary = () => {
                     </Button> */}
                 </Grid>
             </Grid>
-            <Grid container spacing={2} padding={'2rem'}>
+            <Grid container spacing={2} padding={'1rem'}>
                 <ImageList
                     sx={{ width: '100%', height: 450 }}
                     variant="quilted"
-                    cols={4}
+                    cols={isMobile ? 4 : 1}
                     rowHeight={121}
                 >
                     {galleryList.map((item, index) => (

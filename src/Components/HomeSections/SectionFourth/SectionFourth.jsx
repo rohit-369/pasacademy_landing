@@ -59,13 +59,13 @@ const SectionFourth = () => {
     };
 
     return (
-        <Box p={4}>
+        <Box m={'20px'}>
             <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={6} display={'flex'} justifyContent={'start'}>
                     <Typography
                         color={'#212529'}
                         fontFamily={'Inter'}
-                        fontSize={'31px'}
+                        fontSize={['25px', '31px']}
                         fontStyle={'normal'}
                         fontWeight={'700'}
                         lineHeight={'38px'}
@@ -132,58 +132,39 @@ const SectionFourth = () => {
                             .split(/\s+/) // Split into words
                             .slice(0, 10) // Take the first 10 words
                             .join(' ');
+                        const first10WordsTitle = data?.post_title
+                            .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                            .split(/\s+/) // Split into words
+                            .slice(0, 5) // Take the first 10 words
+                            .join(' ');
                         const imageUrl = extractImageUrlFromPostContent(data?.post_content);
 
                         return (
                             <Grid item xs={12} sm={4} md={3} key={data.id}>
-                                <Card sx={{ maxWidth: 345 }}>
+                                <Card sx={{ maxWidth: 345, height: '100%' }}>
                                     <CardMedia
                                         sx={{ height: 200 }}
                                         image={imageUrl}
                                     // title="green iguana"
                                     />
                                     <CardContent>
-                                        <Box
-                                            display={'flex'}
-                                            justifyContent={'space-between'}
-                                            alignItems={'baseline'}
-                                        >
-                                            <Typography
-                                                color={'#5E587A'}
-                                                fontFamily={'Inter'}
-                                                fontWeight={'600'}
-                                                fontSize={'18px'}
-                                                textTransform={'capitalize'}
-                                                gutterBottom variant="h5" component="div">
-                                                {data?.post_title}
-                                            </Typography>
-                                            <Typography
-                                                color={'#5E587A'}
-                                                fontFamily={'Inter'}
-                                                fontWeight={'400'}
-                                                fontSize={'15px'}
-                                                textTransform={'capitalize'}
-                                                gutterBottom variant="h5" component="div">
-                                                {moment(data?.post_date).format('MMMM Do YYYY')}
-                                            </Typography>
-                                        </Box>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontWeight={'600'}
-                                            fontSize={'15px'}
-                                            textTransform={'capitalize'}
-                                            variant="body2" color="text.secondary"
-                                        >
+                                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                                            {parse(first10WordsTitle)}
+                                        </Typography>
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
                                             {parse(first10Words)}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                                            {moment(data?.post_date).format('MMMM Do YYYY')}
+                                        </Typography>
                                         <Button
                                             onClick={(e) => handleReadMoreFaq(e, data)}
                                             sx={{
-                                                background: '#F6E9FF',
+                                                // background: '#F6E9FF',
                                                 padding: '16px 32px',
-                                                alignItems: 'flex-start',
+                                                alignItems: 'flex-end',
                                                 gap: '10px',
                                                 borderRadius: '15px',
                                                 textTransform: 'none',
@@ -217,58 +198,39 @@ const SectionFourth = () => {
                             .split(/\s+/) // Split into words
                             .slice(0, 10) // Take the first 10 words
                             .join(' ');
+                        const first10WordsTitle = data?.post_title
+                            .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+                            .split(/\s+/) // Split into words
+                            .slice(0, 5) // Take the first 10 words
+                            .join(' ');
                         const imageUrl = extractImageUrlFromPostContent(data?.post_content);
 
                         return (
                             <Grid item xs={12} sm={4} md={3} key={data.id}>
-                                <Card sx={{ maxWidth: 345 }}>
+                                <Card sx={{ maxWidth: 345, height: '100%' }}>
                                     <CardMedia
                                         sx={{ height: 200 }}
                                         image={imageUrl}
                                     // title="green iguana"
                                     />
                                     <CardContent>
-                                        <Box
-                                            display={'flex'}
-                                            justifyContent={'space-between'}
-                                            alignItems={'baseline'}
-                                        >
-                                            <Typography
-                                                color={'#5E587A'}
-                                                fontFamily={'Inter'}
-                                                fontWeight={'600'}
-                                                fontSize={'18px'}
-                                                textTransform={'capitalize'}
-                                                gutterBottom variant="h5" component="div">
-                                                {data?.post_title}
-                                            </Typography>
-                                            <Typography
-                                                color={'#5E587A'}
-                                                fontFamily={'Inter'}
-                                                fontWeight={'400'}
-                                                fontSize={'15px'}
-                                                textTransform={'capitalize'}
-                                                gutterBottom variant="h5" component="div">
-                                                {moment(data?.post_date).format('MMMM Do YYYY')}
-                                            </Typography>
-                                        </Box>
-                                        <Typography
-                                            fontFamily={'Inter'}
-                                            fontWeight={'600'}
-                                            fontSize={'15px'}
-                                            textTransform={'capitalize'}
-                                            variant="body2" color="text.secondary"
-                                        >
+                                        <Typography textAlign={'left'} fontWeight={'bold'} lineHeight={'24px'} fontSize={'20px'}>
+                                            {parse(first10WordsTitle)}
+                                        </Typography>
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'14px'}>
                                             {parse(first10Words)}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
+                                        <Typography textAlign={'left'} fontWeight={'600'} color={'#00000080'} lineHeight={'24px'} fontSize={'13px'}>
+                                            {moment(data?.post_date).format('MMMM Do YYYY')}
+                                        </Typography>
                                         <Button
                                             onClick={(e) => handleReadMoreFaq(e, data)}
                                             sx={{
-                                                background: '#F6E9FF',
+                                                // background: '#F6E9FF',
                                                 padding: '16px 32px',
-                                                alignItems: 'flex-start',
+                                                alignItems: 'flex-end',
                                                 gap: '10px',
                                                 borderRadius: '15px',
                                                 textTransform: 'none',

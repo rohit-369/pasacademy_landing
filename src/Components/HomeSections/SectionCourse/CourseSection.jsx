@@ -38,7 +38,7 @@ const CourseSection = () => {
 
 
     return (
-        <Box sx={{ flexGrow: 1, p: 2 }}>
+        <Box sx={{ flexGrow: 1, m: '20px' }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12}>
                     <Typography
@@ -57,7 +57,7 @@ const CourseSection = () => {
                         textAlign={'center'}
                         fontWeight={'600'}
                         fontSize={'18px'}
-                        p={2}
+                        m={'5px'}
                     >
                         {tagsList[0]?.tag}
                     </Typography>

@@ -20,14 +20,14 @@ const BannerSection = () => {
         const response = await CourseNetwrok.fetchBannerss(instId);
         setBanners(response.banners);
     };
-    
+
     useEffect(() => {
         getAllCourses();
         getAllBanners();
     }, []);
 
     return (
-        <Box p={5}>
+        <Box m={'20px'}>
             <Box
                 sx={{
                     mb: 2,
@@ -57,13 +57,14 @@ const BannerSection = () => {
                     {banners && banners.map((banner, index) => {
                         return (
                             <>
-                                <CardMedia
+                                {/* <CardMedia
                                     component="img"
                                     height="230px"
                                     width={'auto'}
                                     // image={Endpoints.mediaBaseUrl + banner?.banner ? bannerImage1 : ""}
                                     image={Endpoints.mediaBaseUrl + banner?.banner}
-                                />
+                                /> */}
+                                <img alt='' width={'100%'} height={'170px'} src={Endpoints.mediaBaseUrl + banner?.banner} />
                             </>
                         )
                     })}
@@ -73,19 +74,19 @@ const BannerSection = () => {
                 textAlign={'center'}
             >
                 <Typography
-                    fontSize={'30px'}
+                    fontSize={'18px'}
                     fontWeight={'700'}
                     fontFamily={'Inter'}
-                    lineHeight={'58px'}
+                    lineHeight={'30px'}
                     color={'black'}
                 >
                     A UPSC-MPPSC COACHING THAT WILL HELP YOU CRACK
                 </Typography>
                 <Typography
-                    fontSize={'30px'}
+                    fontSize={'18px'}
                     fontWeight={'700'}
                     fontFamily={'Inter'}
-                    lineHeight={'58px'}
+                    lineHeight={'30px'}
                     color={'black'}
                 >
                     YOUR ACADEMICS AND EXPLAINS YOUR GAP YEARS
