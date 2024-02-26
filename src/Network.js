@@ -5,6 +5,7 @@ import Endpoints from "./constant/endpoints";
 export default class CourseNetwrok {
     static COURSES_URL = Endpoints.baseURL + "admin/course/fetch-public/";
     static BANNER_URL = Endpoints.baseURL + "/admin/banner/fetch-public-banner/";
+    static FETCH_IFRAME_URL = Endpoints.baseURL + "/admin/iframe/fetch";
     static INSTITUTE_URL = Endpoints.baseURL + "/getMetaData/fetch-institute/";
     static TAGS_LIST_URL = Endpoints.baseURL + "admin/course/fetch-tags-public/";
     // const instId = 94;
@@ -50,5 +51,18 @@ export default class CourseNetwrok {
         );
         return response.data;
     }
+
+    static async fetchIFrame(iframeId) {
+        let requestOptions = {
+          // headers: { "X-Auth": token },
+          withCredentials: false,
+        };
+        const response = await axios.get(
+          this.FETCH_IFRAME_URL + "/" + iframeId,
+          requestOptions
+        );
+        return response.data;
+      }
+    
 
 }

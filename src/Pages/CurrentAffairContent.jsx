@@ -74,7 +74,7 @@ const CurrentAffairContent = () => {
             <SectionTwo />
             <SecondFooter />
             <Footer />
-            <div style={{ position: 'fixed', left: '-45px', top: '90%', transform: 'translateY(-50%)', padding: '10px', width: '100%', display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
+            <div style={{ position: 'fixed', left: '-45px', top: '95%', transform: 'translateY(-50%)', padding: '10px', width: '100%', display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
                 <Button variant="contained" color="primary"
                     onClick={handleWhatsapp}
                     sx={{

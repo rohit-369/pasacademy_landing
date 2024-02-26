@@ -1,9 +1,21 @@
 import { Box, Grid, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const SecondFooter = () => {
 
     const isMobile = useMediaQuery("(min-width:600px)");
+    const navigate = useNavigate();
+
+    const handleNavigatePolicy = (event) => {
+        event.stopPropagation();
+        navigate('/privacyPolicy');
+    };
+
+    const handleNavigateTerm = (event) => {
+        event.stopPropagation();
+        navigate('/termCondition');
+    };
 
     return (
         <Box sx={{ flexGrow: 1, background: '#540000' }}>
@@ -86,16 +98,41 @@ const SecondFooter = () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                     ></iframe>
-                    <Typography
-                        color={'#979595'}
-                        fontFamily={'Inter'}
-                        fontSize={'16px'}
-                        fontWeight={'400'}
-                        lineHeight={'24px'}
+                    <Box
+                        display={'flex'}
+                        gap={'10px'}
                         padding={'5px'}
                     >
-                        FAQs | Privacy Policy | Terms and Conditions
-                    </Typography>
+                        <Typography
+                            color={'#979595'}
+                            fontFamily={'Inter'}
+                            fontSize={'16px'}
+                            fontWeight={'400'}
+                            lineHeight={'24px'}
+                        >
+                            FAQs |
+                        </Typography>
+                        <Typography
+                            color={'#979595'}
+                            fontFamily={'Inter'}
+                            fontSize={'16px'}
+                            fontWeight={'400'}
+                            lineHeight={'24px'}
+                            onClick={handleNavigatePolicy}
+                        >
+                            Privacy Policy  |
+                        </Typography>
+                        <Typography
+                            color={'#979595'}
+                            fontFamily={'Inter'}
+                            fontSize={'16px'}
+                            fontWeight={'400'}
+                            lineHeight={'24px'}
+                            onClick={handleNavigateTerm}
+                        >
+                            Terms and Conditions
+                        </Typography>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>

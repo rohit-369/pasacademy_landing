@@ -35,6 +35,12 @@ const SecondHeader = () => {
   const handleInstagram = () => {
     window.location.href = 'https://www.instagram.com/ps__academy'
   }
+  const handleTelegram = () => {
+    window.location.href = 'https://t.me/ps_academy'
+  }
+  const handleComingSoon = () => {
+    
+  }
 
   return (
     <Box sx={{ flexGrow: 1, background: '#540000', padding: '1px' }}>
@@ -120,7 +126,7 @@ const SecondHeader = () => {
           <img onClick={handleFacebook} width={'8%'} alt='' src={facebookLogo} />
           <img onClick={handleYouTube} width={'8%'} alt='' src={youtubeLogo} />
           <img onClick={handleInstagram} width={'8%'} alt='' src={instagramLogo} />
-          <img width={'8%'} alt='' src={telegramLogo} />
+          <img onClick={handleTelegram} width={'8%'} alt='' src={telegramLogo} />
         </Grid>
         <Grid
           item
@@ -131,9 +137,9 @@ const SecondHeader = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <img width={'20%'} alt='' src={appleStore} />
+          <img onClick={handleComingSoon} width={'20%'} alt='' src={appleStore} />
           <img onClick={handlePlayStore} width={'25%'} alt='' src={playStore} />
-          <img width={'20%'} alt='' src={windowsStore} />
+          <img onClick={handleComingSoon} width={'20%'} alt='' src={windowsStore} />
         </Grid>
       </Grid>
       <hr />

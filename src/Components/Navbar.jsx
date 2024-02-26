@@ -17,6 +17,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import appleStore from '../../images/applestoresvg.svg'
 import playStore from '../../images/playstoresvg.svg'
 import windowsStore from '../../images/windowsstoresvg.svg'
+import pdf from '../MPPSC_syllabus_23feb.pdf'
 
 const pages = ['Interview Guidance', 'Answer Writing Program', 'Free-Resources', `Topper's Strategy`];
 const Navbar = () => {
@@ -186,7 +187,23 @@ const Navbar = () => {
 
     const handlePlayStore = () => {
         window.location.href = 'https://play.google.com/store/apps/details?id=com.classiolabs.psacademy&pcampaignid=web_share'
+    };
+
+    const handleFreeResources = () => {
+        const pdfUrl = pdf;
+        // Open a new window to initiate the download
+        window.open(pdfUrl, '_blank');
     }
+
+    const handleMenuChange = (e, text) => {
+        if (text === 'Free-Resources') {
+            // Replace 'path_to_your_pdf.pdf' with the actual path to your PDF file
+            const pdfUrl = pdf;
+            // Open a new window to initiate the download
+            window.open(pdfUrl, '_blank');
+        }
+    }
+
 
     const DrawerList = (
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -209,27 +226,23 @@ const Navbar = () => {
                 </ListItem>
                 <Collapse in={openCourse} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton
-                            sx={{
-                                boxShadow: '0px 2px 8px 0px #b3a3a3'
-                            }}
-                            onClick={handleClick2}>
-                            {courses && courses
-                                .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
-                                .map((filteredCourse, index) => {
-                                    return (
-                                        <ListItemText
-                                            // onClick={handleCloseM}
-                                            onClick={() => handleBuyCourse(filteredCourse)}
-                                        >
-                                            {filteredCourse.title}
-                                        </ListItemText>
-                                    )
-                                })}
-                        </ListItemButton>
+                        {courses && courses.map((filteredCourse, index) => (
+                            <ListItemButton
+                                key={index} // Make sure to provide a unique key
+                                sx={{
+                                    boxShadow: '0px 2px 8px 0px #b3a3a3'
+                                }}
+                                onClick={() => handleBuyCourse(filteredCourse)}
+                            >
+                                <ListItemText>
+                                    {filteredCourse.title}
+                                </ListItemText>
+                            </ListItemButton>
+                        ))}
                     </List>
                 </Collapse>
-                <ListItem disablePadding>
+
+                {/* <ListItem disablePadding>
                     <ListItemButton
                         sx={{
                             display: 'flex',
@@ -257,11 +270,13 @@ const Navbar = () => {
                             />
                         </ListItemButton>
                     </List>
-                </Collapse>
+                </Collapse> */}
                 {/* Other items */}
                 {pages.map((text, index) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton>
+                        <ListItemButton
+                            onClick={(e) => handleMenuChange(e, text)}
+                        >
                             <Typography variant="body1" style={{ fontSize: '1.2rem' }} >
                                 {text}
                             </Typography>
@@ -375,21 +390,20 @@ const Navbar = () => {
                                     open={showCoursesSubMenu}
                                     onClose={() => setShowCoursesSubMenu(false)}
                                 >
-                                    {courses && courses
-                                        .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
-                                        .map((filteredCourse, index) => {
-                                            return (
-                                                <MenuItem
-                                                    sx={{
-                                                        margin: '5px'
-                                                    }}
-                                                    // onClick={handleCloseM}
-                                                    onClick={() => handleBuyCourse(filteredCourse)}
-                                                >
-                                                    {filteredCourse.title}
-                                                </MenuItem>
-                                            )
-                                        })}
+                                    {courses && courses.map((item, index) => {
+                                        console.log('item', item);
+                                        return (
+                                            <MenuItem
+                                                sx={{
+                                                    margin: '5px'
+                                                }}
+                                                // onClick={handleCloseM}
+                                                onClick={() => handleBuyCourse(item)}
+                                            >
+                                                {item.title}
+                                            </MenuItem>
+                                        )
+                                    })}
                                 </Menu>
                             </MenuItem>
                             <MenuItem
@@ -518,21 +532,19 @@ const Navbar = () => {
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
-                            {courses && courses
-                                .filter(course => course.tags.some(tag => tag.tag === "MPPSC Courses "))
-                                .map((filteredCourse, index) => {
-                                    return (
-                                        <MenuItem
-                                            sx={{
-                                                margin: '5px'
-                                            }}
-                                            // onClick={handleCloseM}
-                                            onClick={() => handleBuyCourse(filteredCourse)}
-                                        >
-                                            {filteredCourse.title}
-                                        </MenuItem>
-                                    )
-                                })}
+                            {courses && courses.map((filteredCourse, index) => {
+                                return (
+                                    <MenuItem
+                                        sx={{
+                                            margin: '5px'
+                                        }}
+                                        // onClick={handleCloseM}
+                                        onClick={() => handleBuyCourse(filteredCourse)}
+                                    >
+                                        {filteredCourse.title}
+                                    </MenuItem>
+                                )
+                            })}
                         </Menu>
                         <Button sx={{ color: '#fff', fontWeight: '600', textTransform: 'none' }}>
                             Interview Guidance
@@ -541,7 +553,7 @@ const Navbar = () => {
                             Answer Writing Program
                         </Button>
                         <IconButton
-                            onClick={handleClickF}
+                            onClick={handleFreeResources}
                             size="small"
                             aria-controls={openF ? 'account-menu-f' : undefined}
                             aria-haspopup="true"
@@ -556,13 +568,13 @@ const Navbar = () => {
                             }}
                         >
                             Free-Resources
-                            {openF === true ?
+                            {/* {openF === true ?
                                 <img alt="" src={upArrow} />
                                 :
                                 <img alt="" src={downArrow} />
-                            }
+                            } */}
                         </IconButton>
-                        <Menu
+                        {/* <Menu
                             anchorEl={anchorElF}
                             id="account-menu-f"
                             open={openF}
@@ -611,7 +623,7 @@ const Navbar = () => {
                                 onClick={handleCloseF}>
                                 Blogs
                             </MenuItem>
-                        </Menu>
+                        </Menu> */}
                         <Button sx={{ color: '#fff', fontWeight: '600', textTransform: 'none' }}>
                             Topper’s Strategy
                         </Button>
