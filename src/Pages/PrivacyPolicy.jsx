@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
                         textAlign={'center'}
                         fontWeight={'600'}
                     >
-                        Privacy Policy
+                        PS Academy Privacy and Security Policy
                     </Typography>
                 </Box>
                 <Typography
@@ -33,7 +33,7 @@ const PrivacyPolicy = () => {
                     fontWeight={'600'}
                     p={2}
                 >
-                    Effective Date : 22 Feb 2024
+                    Last Updated: 27 Feb 2024
                 </Typography>
                 <Box p={2}>
                     <Typography
@@ -41,7 +41,7 @@ const PrivacyPolicy = () => {
                         textAlign={'center'}
                         fontWeight={'500'}
                     >
-                        PS Academy Indore ("PS Academy," "we," "us," or "our") is committed to protecting the privacy of our users. This Privacy Policy describes how we collect, use, and disclose information when you use our educational platform.
+                        Welcome to PS Academy! We are committed to safeguarding your privacy and ensuring the security of your data. This Privacy and Security Policy outlines how we collect, use, and protect your information when you use our website, mobile application (App), and related services. By accessing our services, you agree to the terms outlined in this policy.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (a)<span style={{ fontWeight: '500' }}>Personal Information:</span>When you register on our platform or interact with us, we may collect personal information such as your name, email address, phone number, and other relevant details.
+                        (a)<span style={{ fontWeight: '500' }}>Personal Information:</span>We collect personal information, such as your name, contact details, and address, for registration and account creation.
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -66,7 +66,15 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (b)<span style={{ fontWeight: '500' }}>Usage Data:</span>We may collect information about how you interact with our platform, including your browsing activity, access times, and referring website addresses.
+                        (b)<span style={{ fontWeight: '500' }}>Payment Information:</span>When you make a purchase, we collect necessary payment details through our secure payment gateway, Quickpay, provided by IDBI Bank.
+                    </Typography>
+                    <Typography
+                        fontSize={['18px', '20px']}
+                        textAlign={'start'}
+                        fontWeight={'400'}
+                        p={2}
+                    >
+                        (b)<span style={{ fontWeight: '500' }}>Usage Data:</span>We gather information about your interactions with our website and App to improve our services and user experience.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -83,7 +91,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (a)<span style={{ fontWeight: '500' }}>To Provide Services: </span>Your information helps us improve our platform, personalize your experience, and develop new features.
+                        (a)<span style={{ fontWeight: '500' }}>Course Delivery: </span>Your personal information is used to deliver purchased courses, study material, recorded videos, and facilitate live classes.
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -91,7 +99,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (b)<span style={{ fontWeight: '500' }}>Improvement of Services: </span>We may collect information about how you interact with our platform, including your browsing activity, access times, and referring website addresses.
+                        (b)<span style={{ fontWeight: '500' }}>Transaction Processing: </span>Payment information is securely processed through Quickpay to complete your transactions.
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -99,15 +107,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (c)<span style={{ fontWeight: '500' }}>Communication: </span>We may use your contact information to send you updates, newsletters, and marketing communications. You can opt-out of these communications at any time.
-                    </Typography>
-                    <Typography
-                        fontSize={['18px', '20px']}
-                        textAlign={'start'}
-                        fontWeight={'400'}
-                        p={2}
-                    >
-                        (d)<span style={{ fontWeight: '500' }}>Legal Compliance: </span>We may process your information to comply with legal obligations or enforce our policies.
+                        (c)<span style={{ fontWeight: '500' }}>Communication: </span>We may use your contact details to send important updates, notifications, and promotional materials related to our offerings.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -116,7 +116,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        3. Information Sharing and Disclosure:
+                        3. Data Security:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (a)<span style={{ fontWeight: '500' }}>Service Providers: </span>We may share your information with third-party service providers who assist us in operating our platform, conducting our business, or servicing you.
+                        (a)<span style={{ fontWeight: '500' }}>Secure Transactions: </span>We prioritize the security of your payment transactions by using Quickpay, a secure payment gateway provided by IDBI Bank.
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (b)<span style={{ fontWeight: '500' }}>Business Transfers: </span>We may disclose your information if required by law or in response to valid requests from governmental authorities.
+                        (b)<span style={{ fontWeight: '500' }}>Encryption: </span>We may disclose your information if required by law or in response to valid requests from governmental authorities.
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -140,7 +140,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        (c)<span style={{ fontWeight: '500' }}>Legal Requirements: </span>We may use your contact information to send you updates, newsletters, and marketing communications. You can opt-out of these communications at any time.
+                        (c)<span style={{ fontWeight: '500' }}>Legal Requirements: </span>All data transmission between your device and our servers is encrypted to prevent unauthorized access.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        4. Data Security:
+                        4. Data Sharing and Disclosure:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -157,7 +157,15 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        We implement reasonable security measures to protect your information from unauthorized access, alteration, disclosure, or destruction.
+                        (a)<span style={{ fontWeight: '500' }}>Third-Party Services: </span>We may share your information with third-party service providers for the purpose of delivering our services, but we do not sell or trade your data.
+                    </Typography>
+                    <Typography
+                        fontSize={['18px', '20px']}
+                        textAlign={'start'}
+                        fontWeight={'400'}
+                        p={2}
+                    >
+                        (b)<span style={{ fontWeight: '500' }}>Legal Compliance: </span>We may disclose your information if required by law or in response to a legal request.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -166,7 +174,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        5. Third-Party Links:
+                        5. Your Choices:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -174,7 +182,15 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        Our platform may contain links to third-party websites or services. We are not responsible for the privacy practices or content of these third parties. We encourage you to review the privacy policies of those websites.
+                        (a)<span style={{ fontWeight: '500' }}>Opt-Out: </span>You can opt-out of receiving promotional communications by using the unsubscribe option in our emails.
+                    </Typography>
+                    <Typography
+                        fontSize={['18px', '20px']}
+                        textAlign={'start'}
+                        fontWeight={'400'}
+                        p={2}
+                    >
+                        (b)<span style={{ fontWeight: '500' }}>Access and Update: </span>You can access and update your personal information through your account settings.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -183,7 +199,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        6. Children's Privacy:
+                        6. Refunds and Exchanges:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -191,7 +207,15 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        Our platform is not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe that we have inadvertently collected information from a child, please contact us to remove the information.
+                        (a)<span style={{ fontWeight: '500' }}>Refund Policy:: </span>Refunds are processed in accordance with our refund policy, available on our website and App.
+                    </Typography>
+                    <Typography
+                        fontSize={['18px', '20px']}
+                        textAlign={'start'}
+                        fontWeight={'400'}
+                        p={2}
+                    >
+                        (b)<span style={{ fontWeight: '500' }}>Exchanges: </span>We do not support exchanges for digital products, but we address issues on a case-by-case basis.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -200,7 +224,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        7. Changes to This Privacy Policy:
+                        8. Contact Information:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -208,7 +232,7 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. Your continued use of our platform after the changes indicates your acceptance of the revised Privacy Policy.
+                        If you have any questions or concerns about our Privacy and Security Policy, please contact us at <a href='care@psacademy.co.in.' >care@psacademy.co.in.</a>.
                     </Typography>
                 </Box>
                 <Box p={2}>
@@ -217,7 +241,7 @@ const PrivacyPolicy = () => {
                         textAlign={'start'}
                         fontWeight={'500'}
                     >
-                        8. Contact Us:
+                        9. Changes to this Policy:
                     </Typography>
                     <Typography
                         fontSize={['18px', '20px']}
@@ -225,9 +249,16 @@ const PrivacyPolicy = () => {
                         fontWeight={'400'}
                         p={2}
                     >
-                        If you have any questions or concerns about our Privacy Policy or practices, please contact us at <a href='care@psacademy.co.in.' >care@psacademy.co.in.</a>.
-
-                        By using our educational platform, you consent to the collection and use of your information as described in this Privacy Policy.
+                        We reserve the right to update and revise this Privacy and Security Policy. Any changes will be effective immediately upon posting on our website and App.
+                    </Typography>
+                </Box>
+                <Box p={2}>
+                    <Typography
+                        fontSize={['18px', '25px']}
+                        textAlign={'start'}
+                        fontWeight={'500'}
+                    >
+                        Thank you for choosing PS Academy!
                     </Typography>
                 </Box>
             </Box>

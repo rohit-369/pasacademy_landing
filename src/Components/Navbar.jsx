@@ -391,7 +391,6 @@ const Navbar = () => {
                                     onClose={() => setShowCoursesSubMenu(false)}
                                 >
                                     {courses && courses.map((item, index) => {
-                                        console.log('item', item);
                                         return (
                                             <MenuItem
                                                 sx={{

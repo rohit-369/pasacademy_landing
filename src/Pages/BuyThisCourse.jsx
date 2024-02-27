@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import CourseNetwrok from '../Network';
+import Header from '../Components/Header';
+import SecondHeader from '../Components/SecondHeader';
+import Navbar from '../Components/Navbar';
+import SecondFooter from '../Components/SecondFooter';
+import Footer from '../Components/Footer';
+import { Box } from '@mui/material';
 
 const BuyThisCourse = () => {
 
@@ -29,9 +35,6 @@ const BuyThisCourse = () => {
     useEffect(() => {
         getIframe();
     }, []);
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
 
     const getAllCourses = async () => {
         const response = await CourseNetwrok.fetchCourses(iFrameInstId?.instId);
@@ -56,34 +59,19 @@ const BuyThisCourse = () => {
         };
     }, [iFrameInstId]);
 
-    const handleCourseChecked = (item) => {
-        const coursePrice = Number(item.price) - Number(item.price) * (Number(item.discount) / 100);
-        const id = item.id;
-        const purchaseObject = {
-            purchaseType: "course",
-            entityId: id,
-        };
-        const updatedPurchaseObjects = [...purchaseArray];
-        const isSelected = selectedIds.includes(id);
-
-        if (isSelected) {
-            setTotalPrice((prevTotalPrice) => prevTotalPrice - coursePrice);
-            setSelectedIds(selectedIds.filter((selectedId) => selectedId !== id));
-            const indexToRemove = updatedPurchaseObjects.findIndex((obj) => obj.entityId === id);
-            updatedPurchaseObjects.splice(indexToRemove, 1);
-        } else {
-            setTotalPrice((prevTotalPrice) => prevTotalPrice + coursePrice);
-            setSelectedIds([...selectedIds, id]);
-            updatedPurchaseObjects.push(purchaseObject);
-        }
-        setPurchaseArray(updatedPurchaseObjects);
-    };
 
     return (
         <>
-            <iframe src={`https://iframe.classiolabs.com/buyCourseDetails/?iframeId=${iframeId}&courseId=${courseId}&on-click=${onClick}`} width={'100%'} height={'100%'} />
+            <Header />
+            <SecondHeader />
+            <Navbar />
+            <Box width={'100%'} height={'100%'} pb={2.9} >
+                <iframe src={`https://iframe.classiolabs.com/buyCourseDetails/?iframeId=${iframeId}&courseId=${courseId}&folderId=${0}&on-click=${onClick}`} width={'100%'} height={'100%'} />
+            </Box>
             {/* <source  /> */}
             {/* </iframe> */}
+            <SecondFooter />
+            <Footer />
         </>
     )
 }
